@@ -1,0 +1,952 @@
+; SoundMAX device information file for ODM
+; Analog Devices, Inc. Copyright(c) 1998 - 2005
+; SoundMAX package [M]
+
+[Version]
+Signature="$CHICAGO$"
+Class=MEDIA
+ClassGUID={4d36e96c-e325-11ce-bfc1-08002be10318}
+provider=%ANLG%
+DriverVer = 03/28/2005,%DriverBuildID%
+CatalogFile=smx.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%MfgName%=AnalogDevices
+
+[AnalogDevices]
+%*WDM_AC97AUD.DeviceDesc%=WDM_A188,     pci\ven_8086&dev_24C5&subsys_80B01043
+%*WDM_AC97AUD.DeviceDesc%=WDM_A188,     pci\ven_8086&dev_24C5&subsys_810D1043
+%*WDM_AC97AUD.DeviceDesc%=WDM_ODMSPDFV, pci\ven_8086&dev_24C5&subsys_90431509
+%*WDM_AC97AUD.DeviceDesc%=WDM_ODMSPDFV, pci\ven_8086&dev_24C5&subsys_90441509
+%*WDM_AC97AUD.DeviceDesc%=WDM_ODMSPDFV, pci\ven_8086&dev_24C5&subsys_902A1509
+%*WDM_AC97AUD.DeviceDesc%=WDM_ODMSPDFV, pci\ven_8086&dev_24C5&subsys_902B1509
+%*WDM_AC97AUD.DeviceDesc%=WDM_SF3,      pci\ven_8086&dev_24C5&subsys_42428086
+%*WDM_AC97AUD.DeviceDesc%=WDM_SF3,      pci\ven_8086&dev_24C5&subsys_12101462
+%*WDM_AC97AUD.DeviceDesc%=WDM_SF3LEN,   pci\ven_8086&dev_24C5&subsys_86661019
+%*WDM_AC97AUD.DeviceDesc%=WDM_SF3LEN,   pci\ven_8086&dev_24C5&subsys_86663411
+%*WDM_AC97AUD.DeviceDesc%=WDM_SF3LEN,   pci\ven_8086&dev_24C5&subsys_86668086
+%*WDM_AC97AUD.DeviceDesc%=WDM_SF3LEN,   pci\ven_8086&dev_24C5&subsys_55511462
+%*WDM_AC97AUD.DeviceDesc%=WDM_SF3LEN,   pci\ven_8086&dev_24C5&subsys_86661462
+%*WDM_AC97AUD.DeviceDesc%=WDM_P4M533GV, pci\ven_8086&dev_24C5&subsys_A2001940
+%*WDM_AC97AUD.DeviceDesc%=WDM_P4M533GV, pci\ven_8086&dev_24C5&subsys_A2001458
+%*WDM_AC97AUD.DeviceDesc%=WDM_P4M533,   pci\ven_8086&dev_24C5&subsys_A6001940
+%*WDM_AC97AUD.DeviceDesc%=WDM_P4M533,   pci\ven_8086&dev_24C5&subsys_A6001458
+%*WDM_AC97AUD.DeviceDesc%=WDM_M188,     pci\ven_8086&dev_24C5&subsys_71281462
+
+[DestinationDirs]
+DefaultDestDir = 10,system32\drivers   ; %SystemRoot%\system32\drivers
+WDM_AC97AUD.CopyList = 10,system32\drivers   ; %SystemRoot%\system32\drivers
+DevUpgrd-Files = 10, win9xmig\DevUpgrd
+W2KDriver-Files = 10, win9xmig\DevUpgrd\ADIW2K
+Audio3D.CopyList = 11
+Stubfile = 10, system32\drivers	;;wdmstub
+
+[WDM_A188]
+DriverVer = 03/28/2005,%DriverBuildID%
+AlsoInstall=ks.registration(ks.inf),wdmaudio.registration(wdmaudio.inf)
+CopyFiles=WDM_AC97AUD.CopyList, DevUpgrd-Files, W2KDriver-Files, Stubfile					;;wdmstub
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVMax.AddReg, OdmDsk4.AddReg, A188.AddReg, SPDIFLAP.AddReg, DevUpgrd-AddReg
+KnownRegEntries=ICHAUD.KnownRegEntries
+
+[WDM_ODMSPDFV]
+DriverVer = 03/28/2005,%DriverBuildID%
+AlsoInstall=ks.registration(ks.inf),wdmaudio.registration(wdmaudio.inf)
+CopyFiles=WDM_AC97AUD.CopyList, DevUpgrd-Files, W2KDriver-Files, Stubfile					;;wdmstub
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVMax.AddReg, OdmDsk4.AddReg, OdmFV.AddReg, SPDIFLAP.AddReg, DevUpgrd-AddReg
+KnownRegEntries=ICHAUD.KnownRegEntries
+
+[WDM_SF3]
+DriverVer = 03/28/2005,%DriverBuildID%
+AlsoInstall=ks.registration(ks.inf),wdmaudio.registration(wdmaudio.inf)
+CopyFiles=WDM_AC97AUD.CopyList, DevUpgrd-Files, W2KDriver-Files, Stubfile					;;wdmstub
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVMax.AddReg, Sf3Dsk4.AddReg, Sf34.AddReg, DevUpgrd-AddReg
+KnownRegEntries=ICHAUD.KnownRegEntries
+
+[WDM_SF3LEN]
+DriverVer = 03/28/2005,%DriverBuildID%
+AlsoInstall=ks.registration(ks.inf),wdmaudio.registration(wdmaudio.inf)
+CopyFiles=WDM_AC97AUD.CopyList, DevUpgrd-Files, W2KDriver-Files, Stubfile					;;wdmstub
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVMax.AddReg, Sf3Dsk4.AddReg, Sf3Len.AddReg, SPDIFLAP.AddReg, DevUpgrd-AddReg
+KnownRegEntries=ICHAUD.KnownRegEntries
+
+[WDM_P4M533GV]
+DriverVer = 03/28/2005,%DriverBuildID%
+AlsoInstall=ks.registration(ks.inf),wdmaudio.registration(wdmaudio.inf)
+CopyFiles=WDM_AC97AUD.CopyList, DevUpgrd-Files, W2KDriver-Files, Stubfile					;;wdmstub
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVMax.AddReg, Sf3Dsk4.AddReg, P4M533.AddReg, P4MCom.AddReg, DevUpgrd-AddReg
+KnownRegEntries=ICHAUD.KnownRegEntries
+
+[WDM_P4M533]
+DriverVer = 03/28/2005,%DriverBuildID%
+AlsoInstall=ks.registration(ks.inf),wdmaudio.registration(wdmaudio.inf)
+CopyFiles=WDM_AC97AUD.CopyList, DevUpgrd-Files, W2KDriver-Files, Stubfile					;;wdmstub
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVMax.AddReg, Sf3Dsk4.AddReg, P4M533.AddReg, P4MCom.AddReg, M533.AddReg, DevUpgrd-AddReg
+KnownRegEntries=ICHAUD.KnownRegEntries
+
+[WDM_M188]
+DriverVer = 03/28/2005,%DriverBuildID%
+AlsoInstall=ks.registration(ks.inf),wdmaudio.registration(wdmaudio.inf)
+CopyFiles=WDM_AC97AUD.CopyList, DevUpgrd-Files, W2KDriver-Files, Stubfile					;;wdmstub
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVM2.AddReg, MSIDsk4.AddReg, A188.AddReg, M188.AddReg, SPDIFOff.AddReg, DevUpgrd-AddReg
+KnownRegEntries=ICHAUD.KnownRegEntries
+
+[DevUpgrd-AddReg]
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration DLLs","Microsoft Device Upgrade Pack",,%10%\win9xmig\DevUpgrd
+HKLM,%Upgd%,"pci\ven_8086&dev_2415",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_8086&dev_2425",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_8086&dev_2445",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_8086&dev_2485",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_8086&dev_24C5",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_8086&dev_24D5",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_8086&dev_7195",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_8086&dev_266E",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_8086&dev_27DE",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_1106&dev_3058",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_1106&dev_3059",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_10DE&dev_01B1",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_10DE&dev_006A",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_10DE&dev_00DA",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_10DE&dev_1059",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_10B9&dev_5451",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_10B9&dev_5455",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_1039&dev_7012",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_1022&dev_746D",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_1002&dev_4341",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_1002&dev_4370",,%10%\%UpDir%
+HKLM,%Upgd%,"pci\ven_8086&dev_25A6",,%10%\%UpDir%
+
+[DevUpgrd-Files]
+Migrate.dll
+
+[W2KDriver-Files]
+smwdmCH4.inf
+smwdm.sys
+a3d.dll
+senfilt.sys ;;Sensaura
+aeaudio.sys ;;Andrea
+
+[ICHAUD.KnownRegEntries]
+IsWin98Gold=keep
+
+[IsWin98Gold]
+1=HKLM,Software\Microsoft\Windows\CurrentVersion,VersionNumber,0,4.10.1998
+
+[WDM_A188.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_ODMSPDFV.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_SF3.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_SF3LEN.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_P4M533GV.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_P4M533.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_M188.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_AC97AUD.DelReg]
+HKR, Drivers
+HKR, Disable
+HKR, Settings
+HKR, Sensaura\Configuration
+
+[WDM_AC97AUD.AddReg]
+HKR,,AssociatedFilters,,"wdmaud,swmidi,redbook"
+HKR,,Driver,,smwdm.sys
+HKR,,NTMPDriver,,"wdmstub.sys,smwdm.sys,sbemul.sys,aeaudio.sys,senfilt.sys"
+
+HKR,Drivers,SubClasses,,"wave,midi,mixer"
+
+HKR,Drivers\wave\wdmaud.drv, Driver,,wdmaud.drv
+HKR,Drivers\midi\wdmaud.drv, Driver,,wdmaud.drv
+HKR,Drivers\mixer\wdmaud.drv,Driver,,wdmaud.drv
+
+HKR,Drivers\wave\wdmaud.drv, Description,,%*WDM_AC97AUD.DeviceDesc%
+HKR,Drivers\midi\wdmaud.drv, Description,,%WDM_MIDI%
+HKR,Drivers\mixer\wdmaud.drv,Description,,%*WDM_AC97AUD.DeviceDesc%
+
+; Establish max/min values for Volume nodes. "xxxxMax" is the setting for
+;  maximum volume level (minimum attenuation). "xxxxMin" is the setting for
+;  minimum volume level (maximum attenuation). These values are the Max/Min
+;  bits written to the register for the Max/Min level. As an example, the
+;  MicIn maximum volume can be set to 2 which equals a maximum output of +9 db,
+;  the MicIn minimum is set to 10 which equals a minimum output of - 12 db.
+;  (All register values are Hex.)
+
+HKR, Settings, "HP_VMax", 1, 06   ;   Headphone Volume
+HKR, Settings, "MicVMax", 1, 02   ;   Mic In Volume
+HKR, Settings, "MicVMin", 1, 10   ;
+HKR, Settings, "SurVMax", 1, 08   ;   Surround Volume
+HKR, Settings, "CtrVMax", 1, 08   ;   Center Volume
+HKR, Settings, "LfeVMax", 1, 08   ;   Lfe Volume ( sub woofer )
+
+; Max/Min record levels. xxxRMax is the maximum gain code for that record
+;  source. xxxRMin is the minimum gain code for that source.
+
+; Default volume / mute settings. These are the initial installation settings.
+; The volume default values are tested againts the Max/Min values that may have
+;  been previously established. The Boolean settings (Mute, 20 db, etc.) are
+;  set as 0 = FALSE, non-zero = TRUE;
+;
+; Note that a particular hardware platform may not implement all signal paths.
+;
+; This is the mixed digital PCM stream (Wave, SW Synth and Digital Redbook)
+; This setting is not adjustable from a Mixer control slider. This is
+; not adjustable from the Mixer applet.
+HKR, Settings, "NULL", 1, 00     ;   Generic handler for un-named nodes
+
+HKR, Settings, "MasV", 1, 08     ;   Master Volume
+HKR, Settings, "MasM", 1, 00     ;   Master Mute
+
+HKR, Settings, "PCBV", 1, 08     ;   PCBeep Volume
+                                    
+HKR, Settings, "PhoV", 1, 08     ;   Phone Volume
+HKR, Settings, "LinV", 1, 08     ;   LineIn Volume
+HKR, Settings, "VidV", 1, 08     ;   Video Volume
+HKR, Settings, "AuxV", 1, 08     ;   Aux Volume
+
+HKR, Settings, "MicV", 1, 08     ;   Mic In Volume
+HKR, Settings, "MicM", 1, 01     ;   Mic In Mute
+HKR, Settings, "MicS", 1, 00     ;   Mic In Select (0 == Mic1, 1 == Mic2)
+
+HKR, Settings, "ACDV", 1, 08     ;   Analog CD Volume (not digital redbook !)
+HKR, Settings, "EnableRecordMuting", 1, 01 ; Mute Record when slider at bottom.
+HKR, Settings, "P3DV", 1, 0A     ;   Stereo Wide (Phat 3D) Volume ( 0 - F )
+HKR, Settings, "P3DB", 1, 01     ;   Use enhancement on digital streams
+HKR, Settings, "MonV", 1, 08     ;   Mono Out Volume
+HKR, Settings, "RecS", 1, 00     ;   Record source (0=Mic, 1=CD, 2=Vid, 3=Aux
+                                 ;      4=LineIn, 5=WaveOut, 6=MonoOut, 7=Phone
+HKR, Settings, "HP_V", 1, 08     ;   Headphone Volume
+HKR, Settings, "HP_M", 1, 00     ;   Headphone Mute
+
+HKR, Settings, "FntV", 1, 08     ;   Surround Volume
+HKR, Settings, "FntM", 1, 00     ;   Surround Mute
+HKR, Settings, "SurV", 1, 08     ;   Surround Volume
+HKR, Settings, "SurM", 1, 00     ;   Surround Mute
+HKR, Settings, "LfeV", 1, 08     ;   Lfe Volume ( sub woofer )
+HKR, Settings, "CtrM", 1, 00     ;   Center Mute
+HKR, Settings, "LfeM", 1, 00     ;   Lfe Mute ( sub woofer )
+
+HKR, Settings, "AltMicSelect", 1, 01  ; Define MS as an On/Off control
+HKR, Settings, "MicBoostVal", 1, 00 ;  AD1981A Microphone Boost. 00 = +20db, 01 = +10db, 02 = +30db
+HKR, Settings, "VRefDisable", 1, 00 ;  AD1981A VRefDisable. 00 = enable, 01 = disable
+HKCU,Software\Microsoft\Multimedia\Audio,DefaultFormat,,"Default Quality"
+HKCU,Software\Microsoft\Multimedia\Audio\WaveFormats,"Default Quality",1, 01,00,02,00,44,AC,00,00,10,B1,02,00,04,00,10,00
+
+; Record Controls
+
+HKR, Settings, "OutR", 1, 00     ;   Line output loopback
+HKR, Settings, "ACDR", 1, 01     ;   CD (Analog CD, not Redbook Audio)
+HKR, Settings, "VidR", 1, 01     ;   Video
+HKR, Settings, "AuxR", 1, 01     ;   Aux
+HKR, Settings, "LinR", 1, 01     ;   Line In
+HKR, Settings, "MonR", 1, 01     ;   Mono output loopback
+HKR, Settings, "PhoR", 1, 01     ;   Phone
+; Enable Interrupt on each processed BDL
+;  00 = Interrupt only when KMixer request
+;  01 = Interrupt on every BDL
+HKR, Settings, "SGUpdate", 1, 01
+
+; Disable Node display on mixer applet. Set to 00 to enable, 01 to disable.
+HKR, Disable, "NULL", 1, 00     ;   Generic handler for un-named nodes
+HKR, Disable, "20db", 1, 00     ;   Mic 20db Gain
+HKR, Disable, "MicV", 1, 00     ;   Mic In Volume
+HKR, Disable, "MicM", 1, 00     ;   Mic In Mute
+
+; Record Controls
+HKR, Disable, "MicR", 1, 00     ;   Mic
+HKR, Disable, "OutR", 1, 00     ;   Line output loopback
+HKR, Disable, "Voice", 1, 01    ;   ICHx MicIn DMA channel. 00 = enable, 01 = disable.
+;If you want the MonoOut to track the Master Volume control, set MonoWithMaster
+;to 01. If you want separate Master Volume and MonoOut controls, set
+;MonoWithMaster to 00. If MonoWithMaster = 01, the "MonoOut" controls will _not_
+;be present on SndVol32 (the Master Volume control will control the MonoOut
+;output)
+HKR, Settings, "MonoWithMaster", 1, 00 ;   00 = Normal, 01 = MonoOut tracks Master
+
+;If a AD1885/6 is detected and you want the (headphone) amplifier to track the
+;Master Volume control, set HPWithMaster to 01 (same code written to Master
+;Volume and Headphone volume based upon Master volume settings). If you want
+;separate controls for the Master Volume and Headphone, set HPWithMaster to 00.
+;If ;HpWithMaster = 01, the "Headphone" controls will _not_ be present on
+;SndVol32 (the Master Volume control will control the Headphone amplifier output)
+;If HpWithMaster = 01, the following INF settings are ignored, HP_VMax, HP_VMin,
+;HP_V, HP_M, HP_P.
+;An AD1887 uses the settings for the Master Volume to control the output and
+;automatically sets HPWithMaster.
+
+;If a AD1885/6 is detected and the (headphone) amplifier is used, set HP_P to 00.
+;If the amplified output is not used, set HP_P to 01. If you selected
+;HPWithMaster, this setting is interpreted to be 01 (not active).
+HKR, Disable, "HP_P", 1, 00     ;   Headphone Pin (Headphone destination on AD1885/6)
+                                ;    00 = active, 01 = not active
+
+;;For Sensaura
+HKR,Sensaura\Configuration,RenderFactory,0,%KSNAME_Wave%
+HKR,Sensaura\Configuration,TopologyFactory,0,%KSNAME_Topology%
+HKR,Sensaura\Configuration,ForwardSpeakerConfiguration, 1, 01, 00, 00, 00
+HKR,Sensaura\Configuration,IgnoreDSSpeakerConfiguration, 1, 00, 00, 00, 00
+HKR, Sensaura\Configuration, MaxStreams, 1, 21, 00, 00, 00
+HKR, Settings, "SensPresent", 1, 01 ; Enable Sensaura to report the number of supported channels
+HKR,Sensaura\Configuration, EQEnable, 1, 01, 00, 00, 00
+;;end for Sensaura
+
+[SPDIFOff.AddReg]
+HKR, Disable, "SPDF", 1, 01     ;   01 = Disabled (default), 00 = Enabled
+
+[SPDIFLAP.AddReg]
+; Enable/Disable the S\PDIF channel
+HKR, Disable, "SPDF", 1, 00     ;   01 = Disabled (default), 00 = Enabled
+; S/PDIF channel Data Type
+HKR, Settings, "CAC3",  1, 01   ;   00 = AC3 not checked (default), 01 = AC3 checked
+HKR, Settings, "CPCM",  1, 01   ;   00 = PCM not checked (default), 01 = PCM checked
+
+[ODMFVMax.AddReg]
+HKR, Settings, "FntVMax",            1, 08   ;   Front Volume
+HKR, Settings, "PCMOutVolume",       1, 08 ; PCM Out volume 8 = 0db gain, 7 = +1.5db
+
+[ODMFVM2.AddReg]
+HKR, Settings, "FntVMax",            1, 07   ;   Front Volume
+HKR, Settings, "PCMOutVolume",       1, 07 ; PCM Out volume 8 = 0db gain, 7 = +1.5db
+
+[M533.AddReg]
+HKR, Settings, "JackSenseConf",     1, C1, 20, F6, FF
+HKR, Settings, "JackSenseShare",    1, FF, 57, FF, FF
+
+[M188.AddReg]
+HKR, Disable, "AuxM", 1, 01 ; Aux Mute
+HKR, Disable, "AuxR", 1, 01 ; Aux Record
+HKR, Disable, "AuxV", 1, 01 ; Aux Volume
+HKR, Disable, "MonM", 1, 01 ; Mono Out Mute
+HKR, Disable, "MonR", 1, 01 ; Mono output loopback
+HKR, Disable, "MonV", 1, 01 ; Mono Out Volume
+HKR, Disable, "PhoM", 1, 01 ; Phone Mute
+HKR, Disable, "PhoR", 1, 01 ; Phone Volume
+HKR, Disable, "PhoV", 1, 01 ; Phone Volume
+
+HKR, Settings, "AuxM", 1, 01 ; Aux Mute
+HKR, Settings, "MonM", 1, 01 ; Mono Out Mute
+HKR, Settings, "PhoM", 1, 01 ; Phone Mute 
+
+[OdmDsk4.AddReg]
+HKR, Disable, "SWPC",               1, 00 ; control enabled
+HKR, Disable, "SWPD",               1, 00 ; control enabled
+
+HKR, Settings, "3dBBoost",          1, 01, 00, 00, 00
+HKR, Settings, "HPWithMaster",      1, 01 ; 00 = Normal, 01 = Amplifier output tracks Master
+HKR, Settings, "JackSenseShare",    1, FF, 75, FF, FF
+HKR, Settings, "MagicNumber",       1, 00, 30, 00, 40
+HKR, Settings, "MicR",              1, 08 ; Mic
+HKR, Settings, "MuteSplitEnab",     1, 00 ; Mute split (0= disable, 1=enable)
+HKR, Settings, "SPDIFBit",          1, 00 ; Always set the Copy Protection Bit to 0
+HKR, Settings, "VRefLevel",         1, 01 ; AD1981A VRefLevel. 00 = 2.25v, 01 = 3.7v
+
+[MSIDsk4.AddReg]
+HKR, Disable, "SWPC",               1, 00 ; control enabled
+HKR, Disable, "SWPD",               1, 00 ; control enabled
+
+HKR, Settings, "3dBBoost",          1, 01, 00, 00, 00
+HKR, Settings, "HPWithMaster",      1, 01 ; 00 = Normal, 01 = Amplifier output tracks Master
+HKR, Settings, "JackSenseShare",    1, FF, 57, FF, FF
+HKR, Settings, "MagicNumber",       1, 00, 30, 00, 40
+HKR, Settings, "MicR",              1, 08 ; Mic
+HKR, Settings, "MuteSplitEnab",     1, 00 ; Mute split (0= disable, 1=enable)
+HKR, Settings, "SPDIFBit",          1, 00 ; Always set the Copy Protection Bit to 0
+HKR, Settings, "VRefLevel",         1, 01 ; AD1981A VRefLevel. 00 = 2.25v, 01 = 3.7v
+
+[A188.AddReg]
+HKR, Settings, "ACDRMax",           1, 0A ; Max Analog CD Gain (not Redbook Audio)
+HKR, Settings, "AuxRMax",           1, 0A ; Aux
+HKR, Settings, "CtrV",              1, 00 ; Center Volume
+HKR, Settings, "JackSenseConf",     1, C1, 20, F6, FF
+HKR, Settings, "LinRMax",           1, 0A ; Line In
+HKR, Settings, "SwapCenterLFE",     1, 03 ; Swap the data when the control is swapped
+HKR, Settings, "SWPC",              1, 01 ; Controls not swapped
+
+[OdmFV.AddReg]
+HKR, Settings, "CtrV",              1, 08 ; Center Volume
+HKR, Settings, "JackSenseConf",     1, C1, 20, F6, FF
+HKR, Settings, "SwapCenterLFE",     1, 02 ; Swap the data when the control is swapped
+
+[Sf3Dsk4.AddReg]
+HKR, Disable, "AuxM",           1, 01 ; Aux Mute
+HKR, Disable, "AuxR",           1, 01 ; Aux Record
+HKR, Disable, "AuxV",           1, 01 ; Aux Volume
+
+HKR, Settings, "3dBBoost",      1, 01, 00, 00, 00
+HKR, Settings, "AuxM",          1, 01 ; Aux Mute
+HKR, Settings, "HPWithMaster",  1, 01 ; 00 = Normal, 01 = Amplifier output tracks Master
+HKR, Settings, "VRefLevel",     1, 01 ; AD1981A VRefLevel. 00 = 2.25v, 01 = 3.7v
+
+[Sf34.AddReg]
+HKR, Disable, "MicS",           1, 01 ; Mic In Select
+
+HKR, Settings, "3Jack",          1, 03 ; 3 Jack sharing. 03 = 2 channel mode
+HKR, Settings, "JackSenseConf",  1, F1, 75, FF, FF
+HKR, Settings, "MagicNumber",    1, 00, 30, 00, 40
+
+[Sf3Len.AddReg]
+HKR, Disable, "MicS",            1, 01 ; Mic In Select
+HKR, Disable, "SWPC",            1, 00 ; control enabled
+HKR, Disable, "SWPD",            1, 00 ; control enabled
+
+HKR, Settings, "JackSenseConf",  1, C1, 20, F6, FF
+HKR, Settings, "JackSenseShare", 1, FF, 57, FF, FF
+HKR, Settings, "MagicNumber",    1, 00, 30, 00, 40
+HKR, Settings, "SPDIFBit",       1, 00 ; Always set the Copy Protection Bit to 0
+HKR, Settings, "SwapCenterLFE",  1, 02 ; Swap the data when the control is swapped
+HKR, Settings, "SWPC",           1, 01 ; Controls swapped
+
+[P4MCom.AddReg]
+HKR, Disable, "MonM", 1, 01 ; Mono Out Mute
+HKR, Disable, "MonR", 1, 01 ; Mono output loopback
+HKR, Disable, "MonV", 1, 01 ; Mono Out Volume
+HKR, Disable, "PhoM", 1, 01 ; Phone Mute
+HKR, Disable, "PhoR", 1, 01 ; Phone Volume
+HKR, Disable, "PhoV", 1, 01 ; Phone Volume
+HKR, Disable, "SWPC", 1, 00 ; control enabled
+HKR, Disable, "SWPD", 1, 00 ; control enabled
+
+HKR, Settings, "MonM",          1, 01 ; Mono Out Mute
+HKR, Settings, "PhoM",          1, 01 ; Phone Mute
+HKR, Settings, "SwapCenterLFE", 1, 02 ; Swap the data when the control is swapped
+HKR, Settings, "SPDIFBit",      1, 00 ; Always set the Copy Protection Bit to 0
+HKR, Settings, "SWPC",          1, 01 ; Controls not swapped
+
+[P4M533.AddReg]
+HKR, Settings, "ACDRMax",        1, 0A ; Max Analog CD Gain (not Redbook Audio)
+HKR, Settings, "AuxRMax",        1, 0A ; Aux
+HKR, Settings, "CtrV",           1, 00 ; Center Volume
+HKR, Settings, "LinRMax",        1, 0A ; Line In
+HKR, Settings, "MagicNumber",    1, 00, 30, 00, 40
+HKR, Settings, "MicR",           1, 08 ; Mic Recording Level
+HKR, Settings, "MuteSplitEnab",  1, 00 ; Mute split (0= disable, 1=enable)
+
+[WDM_AC97AUD_GUID.AddReg]
+HKLM,%MediaCategories%\%ADIGUID.PcBeep%,Name,,%Pin.PcBeep%
+HKLM,%MediaCategories%\%ADIGUID.PcBeep%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.Phone%,Name,,%Pin.Phone%
+HKLM,%MediaCategories%\%ADIGUID.Phone%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.Video%,Name,,%Pin.Video%
+HKLM,%MediaCategories%\%ADIGUID.Video%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.MonoOut%,Name,,%Pin.MonoOut%
+HKLM,%MediaCategories%\%ADIGUID.MonoOut%,Display,1,00,00,00,00
+
+HKLM,%MediaCategories%\%ADIGUID.PCBeepVol%,Name,,%Control.PCBeepVol%
+HKLM,%MediaCategories%\%ADIGUID.PCBeepVol%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.PhoneVol%,Name,,%Control.PhoneVol%
+HKLM,%MediaCategories%\%ADIGUID.PhoneVol%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.VIDVol%,Name,,%Control.VIDVol%
+HKLM,%MediaCategories%\%ADIGUID.VIDVol%,Display,1,00,00,00,00
+
+HKLM,%MediaCategories%\%ADIGUID.20DB%,Name,,%Control.20DB%
+HKLM,%MediaCategories%\%ADIGUID.20DB%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.PHATBypass%,Name,,%Control.PHATBypass%
+HKLM,%MediaCategories%\%ADIGUID.PHATBypass%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.MonoVol%,Name,,%Control.MonoVol%
+HKLM,%MediaCategories%\%ADIGUID.MonoVol%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.MicSelect%,Name,,%Control.MicSelect%
+HKLM,%MediaCategories%\%ADIGUID.MicSelect%,Display,1,00,00,00,00
+
+HKLM,%MediaCategories%\%ADIGUID.CaptureVid%,Name,,%Control.CaptureVid%
+HKLM,%MediaCategories%\%ADIGUID.CaptureVid%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.CaptureMono%,Name,,%Control.CaptureMono%
+HKLM,%MediaCategories%\%ADIGUID.CaptureMono%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.CapturePhone%,Name,,%Control.CapturePhone%
+HKLM,%MediaCategories%\%ADIGUID.CapturePhone%,Display,1,00,00,00,00
+
+HKLM,%MediaCategories%\%ADIGUID.Front%,Name,,%Pin.Front%
+HKLM,%MediaCategories%\%ADIGUID.Front%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.Surround%,Name,,%Pin.Surround%
+HKLM,%MediaCategories%\%ADIGUID.Surround%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.Center%,Name,,%Pin.Center%
+HKLM,%MediaCategories%\%ADIGUID.Center%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.Lfe%,Name,,%Pin.Lfe%
+HKLM,%MediaCategories%\%ADIGUID.Lfe%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.FrontVol%,Name,,%Control.FrontVol%
+HKLM,%MediaCategories%\%ADIGUID.FrontVol%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.SurroundVol%,Name,,%Control.SurroundVol%
+HKLM,%MediaCategories%\%ADIGUID.SurroundVol%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.CenterVol%,Name,,%Control.CenterVol%
+HKLM,%MediaCategories%\%ADIGUID.CenterVol%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.LfeVol%,Name,,%Control.LfeVol%
+HKLM,%MediaCategories%\%ADIGUID.LfeVol%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.SwapC%,Name,,%Control.SwapC%
+HKLM,%MediaCategories%\%ADIGUID.SwapC%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.SwapD%,Name,,%Control.SwapD%
+HKLM,%MediaCategories%\%ADIGUID.SwapD%,Display,1,00,00,00,00
+
+HKLM,%MediaCategories%\%ADIGUID.CAC3%,Name,,%Control.CAC3%
+HKLM,%MediaCategories%\%ADIGUID.CAC3%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.CPCM%,Name,,%Control.CPCM%
+HKLM,%MediaCategories%\%ADIGUID.CPCM%,Display,1,00,00,00,00
+
+HKLM,%MediaCategories%\%EQGUID.EQ0%,Name,,"EQ"
+HKLM,%MediaCategories%\%EQGUID.EQ0%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.EQ1%,Name,,"EQ"
+HKLM,%MediaCategories%\%EQGUID.EQ1%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.Enable%,Name,,"Enable EQ"
+HKLM,%MediaCategories%\%EQGUID.Enable%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B1%,Name,,"31 Hz"
+HKLM,%MediaCategories%\%EQGUID.B1%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B1L%,Name,,"31 Hz Level"
+HKLM,%MediaCategories%\%EQGUID.B1L%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B2%,Name,,"62 Hz"
+HKLM,%MediaCategories%\%EQGUID.B2%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B2L%,Name,,"62 Hz Level"
+HKLM,%MediaCategories%\%EQGUID.B2L%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B3%,Name,,"125 Hz"
+HKLM,%MediaCategories%\%EQGUID.B3%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B3L%,Name,,"125 Hz Level"
+HKLM,%MediaCategories%\%EQGUID.B3L%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B4%,Name,,"250 Hz"
+HKLM,%MediaCategories%\%EQGUID.B4%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B4L%,Name,,"250 Hz Level"
+HKLM,%MediaCategories%\%EQGUID.B4L%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B5%,Name,,"500 Hz"
+HKLM,%MediaCategories%\%EQGUID.B5%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B5L%,Name,,"500 Hz Level"
+HKLM,%MediaCategories%\%EQGUID.B5L%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B6%,Name,,"1 kHz"
+HKLM,%MediaCategories%\%EQGUID.B6%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B6L%,Name,,"1 kHz Level"
+HKLM,%MediaCategories%\%EQGUID.B6L%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B7%,Name,,"2 kHz"
+HKLM,%MediaCategories%\%EQGUID.B7%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B7L%,Name,,"2 kHz Level"
+HKLM,%MediaCategories%\%EQGUID.B7L%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B8%,Name,,"4 kHz"
+HKLM,%MediaCategories%\%EQGUID.B8%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B8L%,Name,,"4 kHz Level"
+HKLM,%MediaCategories%\%EQGUID.B8L%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B9%,Name,,"8 kHz"
+HKLM,%MediaCategories%\%EQGUID.B9%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B9L%,Name,,"8 kHz Level"
+HKLM,%MediaCategories%\%EQGUID.B9L%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B10%,Name,,"16 kHz"
+HKLM,%MediaCategories%\%EQGUID.B10%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%EQGUID.B10L%,Name,,"16 kHz Level"
+HKLM,%MediaCategories%\%EQGUID.B10L%,Display,1,00,00,00,00
+
+[DriverInfo.DelReg]
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%
+
+[DriverInfo.AddReg]
+; This section is added to all INFs to add registry entries for Driver Information.
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,Description,,%DriverDescription%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,CurrentVer,,%DriverOEMVersion%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,Ver_%DriverOEMVersion%,,%DriverVersionID%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%, DriverBuildDate,,%DriverBuildDate%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%, BaseDriverFileName,,"smwdm.sys"
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%, BaseDriverFileVersion,,"5.12.5410"
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%, INFVersion,,%INFVersionID%
+
+[SourceDisksNames]
+222=%Empty%,,,
+
+[SourceDisksFiles]
+smwdm.sys=222
+smwdmCH4.inf=222
+migrate.dll=222
+a3d.dll=222
+senfilt.sys=222		;;Sensaura
+aeaudio.sys=222		;;Andrea
+wdmstub.sys=222		;;wdmstub
+;; copy these files into the
+;; system32\drivers directory
+
+[WDM_AC97AUD.CopyList]
+smwdm.sys
+senfilt.sys	;;Sensaura
+aeaudio.sys	;;Andrea
+
+[Stubfile]		;;wdmstub
+wdmstub.sys		;;wdmstub	
+
+[Audio3d.CopyList]
+a3d.dll				;;Sensaura
+
+;;**************** NT Install ****************
+
+[WDM_A188.NT]
+Include=ks.inf,wdmaudio.inf
+Needs=Ks.Registration,WDMAUDIO.Registration
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+CopyFiles=WDM_AC97AUD.CopyList, Audio3d.CopyList
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUDAddReg.NT, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVMax.AddReg, OdmDsk4.AddReg, A188.AddReg, SPDIFLAP.AddReg
+
+[WDM_ODMSPDFV.NT]
+Include=ks.inf,wdmaudio.inf
+Needs=Ks.Registration,WDMAUDIO.Registration
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+CopyFiles=WDM_AC97AUD.CopyList, Audio3d.CopyList
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUDAddReg.NT, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVMax.AddReg, OdmDsk4.AddReg, OdmFV.AddReg, SPDIFLAP.AddReg
+
+[WDM_SF3.NT]
+Include=ks.inf,wdmaudio.inf
+Needs=Ks.Registration,WDMAUDIO.Registration
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+CopyFiles=WDM_AC97AUD.CopyList, Audio3d.CopyList
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUDAddReg.NT, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVMax.AddReg, Sf3Dsk4.AddReg, Sf34.AddReg
+
+[WDM_SF3LEN.NT]
+Include=ks.inf,wdmaudio.inf
+Needs=Ks.Registration,WDMAUDIO.Registration
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+CopyFiles=WDM_AC97AUD.CopyList, Audio3d.CopyList
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUDAddReg.NT, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVMax.AddReg, Sf3Dsk4.AddReg, Sf3Len.AddReg, SPDIFLAP.AddReg
+
+[WDM_P4M533GV.NT]
+Include=ks.inf,wdmaudio.inf
+Needs=Ks.Registration,WDMAUDIO.Registration
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+CopyFiles=WDM_AC97AUD.CopyList, Audio3d.CopyList
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUDAddReg.NT, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVMax.AddReg, Sf3Dsk4.AddReg, P4M533.AddReg, P4MCom.AddReg
+
+[WDM_P4M533.NT]
+Include=ks.inf,wdmaudio.inf
+Needs=Ks.Registration,WDMAUDIO.Registration
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+CopyFiles=WDM_AC97AUD.CopyList, Audio3d.CopyList
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUDAddReg.NT, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVMax.AddReg, Sf3Dsk4.AddReg, P4M533.AddReg, P4MCom.AddReg, M533.AddReg
+
+[WDM_M188.NT]
+Include=ks.inf,wdmaudio.inf
+Needs=Ks.Registration,WDMAUDIO.Registration
+DelReg=WDM_AC97AUD.DelReg, DriverInfo.DelReg
+CopyFiles=WDM_AC97AUD.CopyList, Audio3d.CopyList
+AddReg=WDM_AC97AUD.AddReg, WDM_AC97AUDAddReg.NT, WDM_AC97AUD_GUID.AddReg, DriverInfo.AddReg, OdmFVM2.AddReg, MSIDsk4.AddReg, A188.AddReg, M188.AddReg, SPDIFOff.AddReg
+
+[WDM_A188.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_ODMSPDFV.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_SF3.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_SF3LEN.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_P4M533GV.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_P4M533.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+[WDM_M188.NT.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%, AC97Aud.Interface.Wave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%, AC97Aud.Interface.Topology
+AddInterface=%ANDREA_INTERFACE%,,AC97Aud.Interface.Andrea
+
+; For Andrea
+
+[WDM_A188.NT.HW]
+AddReg=FilterAddReg.NT
+
+[WDM_ODMSPDFV.NT.HW]
+AddReg=FilterAddReg.NT
+
+[WDM_SF3.NT.HW]
+AddReg=FilterAddReg.NT
+
+[WDM_SF3LEN.NT.HW]
+AddReg=FilterAddReg.NT
+
+[WDM_P4M533GV.NT.HW]
+AddReg=FilterAddReg.NT
+
+[WDM_P4M533.NT.HW]
+AddReg=FilterAddReg.NT
+
+[WDM_M188.NT.HW]
+AddReg=FilterAddReg.NT
+
+;;end Andrea
+
+[AC97Aud.Interface.Wave]
+AddReg=AC97Aud.Interface.Wave.AddReg
+[AC97Aud.Interface.Wave.AddReg]
+HKR,,FriendlyName,,%AC97Aud.Wave.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[AC97Aud.Interface.Topology]
+AddReg=AC97Aud.Interface.Topo.AddReg
+;;must use topo because topology is too long
+[AC97Aud.Interface.Topo.AddReg]
+HKR,,FriendlyName,,%AC97Aud.Topology.szPname%
+
+;For Andrea
+[AC97Aud.Interface.Andrea]
+AddReg=AC97Aud.Interface.Andr.AddReg
+[AC97Aud.Interface.Andr.AddReg]
+HKR,,FriendlyName,,%AC97Aud.Andrea.szPname%
+
+[FilterAddReg.NT]
+HKR,,"UpperFilters",0x00010000,"AEAUDIO", "SENFILT"
+
+[WDM_AC97AUDAddReg.NT]
+HKR,,NTMPDriver,,"smwdm.sys,sbemul.sys"
+
+[WDM_A188.NT.Services]
+AddService = smwdm, 0x00000002, WDM_AC97AUD_Service_Inst
+AddService = aeaudio,0x00000000, aeaudio_Service_Inst		;;Andrea
+AddService = senfilt,0x00000000, senfilt_Service_Inst		;;Sensaura
+
+[WDM_ODMSPDFV.NT.Services]
+AddService = smwdm, 0x00000002, WDM_AC97AUD_Service_Inst
+AddService = aeaudio,0x00000000, aeaudio_Service_Inst		;;Andrea
+AddService = senfilt,0x00000000, senfilt_Service_Inst		;;Sensaura
+
+[WDM_SF3.NT.Services]
+AddService = smwdm, 0x00000002, WDM_AC97AUD_Service_Inst
+AddService = aeaudio,0x00000000, aeaudio_Service_Inst		;;Andrea
+AddService = senfilt,0x00000000, senfilt_Service_Inst		;;Sensaura
+
+[WDM_SF3LEN.NT.Services]
+AddService = smwdm, 0x00000002, WDM_AC97AUD_Service_Inst
+AddService = aeaudio,0x00000000, aeaudio_Service_Inst		;;Andrea
+AddService = senfilt,0x00000000, senfilt_Service_Inst		;;Sensaura
+
+[WDM_P4M533GV.NT.Services]
+AddService = smwdm, 0x00000002, WDM_AC97AUD_Service_Inst
+AddService = aeaudio,0x00000000, aeaudio_Service_Inst		;;Andrea
+AddService = senfilt,0x00000000, senfilt_Service_Inst		;;Sensaura
+
+[WDM_P4M533.NT.Services]
+AddService = smwdm, 0x00000002, WDM_AC97AUD_Service_Inst
+AddService = aeaudio,0x00000000, aeaudio_Service_Inst		;;Andrea
+AddService = senfilt,0x00000000, senfilt_Service_Inst		;;Sensaura
+
+[WDM_M188.NT.Services]
+AddService = smwdm, 0x00000002, WDM_AC97AUD_Service_Inst
+AddService = aeaudio,0x00000000, aeaudio_Service_Inst		;;Andrea
+AddService = senfilt,0x00000000,  senfilt_Service_Inst		;;Sensaura
+
+[WDM_AC97AUD_Service_Inst]
+;DisplayName    = %WDM_AC97AUD.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\system32\drivers\smwdm.sys
+
+; For Andrea
+[aeaudio_Service_Inst]
+;DisplayName    = %AEAudio.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\system32\drivers\aeaudio.sys
+
+; For SenAura
+[senfilt_Service_Inst]
+;DisplayName    = %SENFILT.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\system32\drivers\senfilt.sys
+
+[Strings]
+;; AC'97 Device friendly names (GUIDS non-localizeable)
+
+ADIGUID.PcBeep      ="{992C6360-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.MonoOut     ="{992C6361-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.Phone       ="{992C6362-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.Video       ="{992C6366-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.PCBeepVol   ="{992C6372-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.MonoVol     ="{992C6374-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.PhoneVol    ="{992C6376-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.VIDVol      ="{992C637A-643D-11D2-9BDC-00A0C9696B7D}"
+
+ADIGUID.20DB        ="{992C6380-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.PHATBypass  ="{992C6387-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.MicSelect   ="{992C638D-643D-11D2-9BDC-00A0C9696B7D}"
+
+ADIGUID.CaptureVid  ="{992C6392-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.CaptureMono ="{992C6396-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.CapturePhone ="{992C6397-643D-11D2-9BDC-00A0C9696B7D}"
+
+ADIGUID.Front       ="{992C636A-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.Surround    ="{992C6365-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.Center      ="{992C6364-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.Lfe         ="{992C6363-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.FrontVol    ="{992C6370-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.SurroundVol ="{992C6381-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.CenterVol   ="{992C6382-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.LfeVol      ="{992C6383-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.SwapC       ="{A3156CDD-A925-4A37-BD1F-BC9D627F3F06}"
+ADIGUID.SwapD       ="{A3156CDE-A925-4A37-BD1F-BC9D627F3F06}"
+
+ADIGUID.CAC3        ="{A3156CD9-A925-4A37-BD1F-BC9D627F3F06}"
+ADIGUID.CPCM        ="{A3156CDA-A925-4A37-BD1F-BC9D627F3F06}"
+
+;; Analog Devices friendly names (localizeable)
+;Sources (Pins)
+Pin.PcBeep       ="PC Beep"          ; PC Beep Input
+Pin.MonoOut      ="Mono Out"         ; Mono line output
+Pin.Phone        ="Phone"            ; Phone Input
+Pin.Video        ="Video"            ; Video Input
+Pin.Front        ="Front"            ; Front Output
+Pin.Surround     ="Rear"             ; Surround Output
+Pin.Center       ="Center"           ; Center Channel Output
+Pin.Lfe          ="Subwoofer"        ; Sub woofer ( Lfe )
+
+;Controls       (Controls as related to Sources)
+
+Control.PCBeepVol     ="PCBeep Volume"   ; PC Beep volume control name
+Control.PhoneVol      ="Phone Volume"    ; Phone volume control name
+Control.VIDVol        ="Video Volume"    ; Video volume control name
+Control.20DB          ="MIC Boost"       ; Microphone advanced control
+Control.PHATBypass    ="Apply 3D effect to digital audio"
+                                         ; 3D bypass control string (bypass
+                                         ;  spatialization on digital streams)
+
+Control.MonoVol       ="Mono Volume"     ; Monoaural Output volume control name
+Control.MicSelect     ="Front Panel Microphone" ; Microphone advanced control
+
+Control.CaptureVid    ="Video"           ; Video Record
+Control.CaptureMono   ="Mono Out"        ; Mono Mix Record
+Control.CapturePhone  ="Phone"           ; Phone Record
+
+Control.FrontVol     ="Front Volume"     ; Front Output
+Control.SurroundVol  ="Rear Volume"      ; Surround Output
+Control.CenterVol    ="Center Volume"    ; Center Channel Output
+Control.LfeVol       ="Subwoofer Volume" ; Sub woofer ( Lfe )
+Control.SwapC        ="Swap Center/Subwoofer"
+Control.SwapD        ="Swap Center/Subwoofer Data"
+
+Control.CAC3	     ="AC3 SPDIF"	 ; AC3 Select
+Control.CPCM	     ="PCM SPDIF"	 ; PCM Select
+
+EQGUID.EQ0    ="{2A6E7290-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.EQ1    ="{2A6E7291-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.Enable ="{2A6E7292-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B1     ="{2A6E7293-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B1L    ="{2A6E7294-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B2     ="{2A6E7295-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B2L    ="{2A6E7296-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B3     ="{2A6E7297-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B3L    ="{2A6E7298-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B4     ="{2A6E7299-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B4L    ="{2A6E729A-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B5     ="{2A6E729B-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B5L    ="{2A6E729C-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B6     ="{2A6E729D-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B6L    ="{2A6E729E-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B7     ="{2A6E729F-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B7L    ="{2A6E72A0-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B8     ="{2A6E72A1-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B8L    ="{2A6E72A2-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B9     ="{2A6E72A3-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B9L    ="{2A6E72A4-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B10    ="{2A6E72A5-2A58-4C82-B64F-22B341B7F1BD}"
+EQGUID.B10L   ="{2A6E72A6-2A58-4C82-B64F-22B341B7F1BD}"
+
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+Upgd="Software\Microsoft\Windows\CurrentVersion\Setup\UpgradeDrivers"
+UpDir="win9xmig\DevUpgrd\ADIW2K\smwdmCH4.inf"
+WDM_MIDI="WDM-based Device"
+Proxy.CLSID="{17CCA71B-ECD7-11D0-B908-00A0C9223196}"
+KSCATEGORY_AUDIO="{6994AD04-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSNAME_Wave="Wave"
+KSNAME_Topology="Topology"
+ANDREA_INTERFACE="{56907941-3AFE-11d4-AE2C-00A0CC242D2C}"
+AC97Aud.Andrea.szPname="Andrea in SoundMAX"
+
+ANLG="Analog Devices"
+MfgName="Analog Devices, Inc."
+Empty="Install disk"
+
+*WDM_AC97AUD.DeviceDesc="SoundMAX Integrated Digital Audio"
+AC97Aud.Wave.szPname="SoundMAX Digital Audio"
+AC97Aud.Topology.szPname="SoundMAX Digital Audio"
+
+;WDM_AC97AUD.SvcDesc = "SoundMAX Integrated Digital Audio"
+
+; History Information
+DriverMfgr="AnalogDevices"
+DriverVersionID="5.12.5410"
+DriverBuildDate="03/28/2005"
+DriverBuildID="5.12.01.5410"
+INFVersionID="5.12.01.5410-0000"
+DriverOEM="AnalogDevices"
+DriverFamily="Audio"
+DriverProduct="SoundMAX"
+DriverDescription="Audio Driver"
+DriverOEMVersion="x00"
+

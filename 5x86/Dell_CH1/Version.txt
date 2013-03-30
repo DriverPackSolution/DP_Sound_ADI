@@ -1,0 +1,12 @@
+Title      : Audio:AD1885 Integrated Audio 
+Version    : A19
+OEM Name   : Analog Devices
+OEM Ver    : 5.12.01.3508
+Computers  : Dimension  C, 4100, 4200, 900, 4300, 8200, 2200, 4400, 4300S
+OptiPlex  GX300, GX200, GC, GX110, GX150, GX400, GX50, GX115, GX240
+Precision  220, 330, 530, 340
+SmartStep  150D
+
+Oses       : Windows 2000 Professional,Windows 98 Second Edition,Windows Me ,Windows XP Home EditionWindows XP Professional
+Languages  : Brazilian Portuguese,Chinese-S,Chinese-T,English,French,German,Japanese,Korean,Spanish
+Created    : Wed Jul 31 16:04:42 CDT 2002

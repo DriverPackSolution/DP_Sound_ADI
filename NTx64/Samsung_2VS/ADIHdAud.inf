@@ -1,0 +1,1151 @@
+;Copyright (c) Analog Devices, Inc. 2006
+; SAMSUNG
+; SoundMAX package [2VS]
+;
+;Module Name:
+;    ADIHDAUD.INF
+;
+;Abstract:
+;    INF file for installing the ADI UAA Function Driver for High Definition Audio
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=MEDIA
+ClassGuid={4d36e96c-e325-11ce-bfc1-08002be10318}
+Provider=%ADI%
+DriverVer = 11/17/2006,%DriverBuildID%
+CatalogFile=smx.cat
+
+[DestinationDirs]
+DefaultDestDir      =10; dirid = \system32\drivers
+HdAudModel.CopyList =10,system32\drivers
+SfxFx.CopyList =11   ; %windir%\system32
+
+[DriverInfo.DelReg]
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%
+
+[DriverInfo.AddReg]
+; This section is added to all INFs to add registry entries for Driver Information.						
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,Description,,%DriverDescription%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,CurrentVer,,%DriverOEMVersion%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,Ver_%DriverOEMVersion%,,%DriverVersionID%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%, DriverBuildDate,,%DriverBuildDate%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%, BaseDriverFileName,,"ADIHdAud.sys"
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%, BaseDriverFileVersion,,"6.10.5140"
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%, INFVersion,,%INFVersionID%
+
+[SourceDisksNames]
+222=%DiskId1%,"",222
+
+[SourceDisksFiles]
+ADIHdAud.sys=222
+srs_apo_suite64.dll=222
+Com_SRS_WOWHD64.dll=222
+Com_SRS_TruSurroundXT64.dll=222
+SRS_APO_Prop_Page64.dll=222
+
+[Manufacturer]
+%AnalogDevices.Mfg%=AnalogDevices, NTamd64
+
+;============================================================================
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[AnalogDevices.NTamd64]
+
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HD_SAM, HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DC022
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HD_SAM, HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DC01E
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = Sedona, HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DC023
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HabanaB,HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DC024
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = Sedona, HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DC029
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HabanaC,HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DC503
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HabanaC,HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DB03C
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = Hainan, HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DC026
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = Hainan, HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DC02A
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = Santafe,HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DC027
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = Hainan, HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DC028
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HabanaC,HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DC504
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = Hainan, HDAUDIO\FUNC_01&VEN_11D4&DEV_1986&subsys_144DC505
+
+[HD_SAM.NTamd64]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, SfxFx.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHD_SAM.AddReg, DriverInfo.AddReg
+AddProperty = HdAudBranding.AddProperty
+RegisterDlls=SfxFx.RegisterDlls
+
+[Sedona.NTamd64]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, SfxFx.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitSedona.AddReg, DriverInfo.AddReg
+AddProperty = HdAudBranding.AddProperty
+RegisterDlls=SfxFx.RegisterDlls
+
+[HabanaB.NTamd64]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, SfxFx.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHabanaB.AddReg, DriverInfo.AddReg
+AddProperty = HdAudBranding.AddProperty
+RegisterDlls=SfxFx.RegisterDlls
+
+[HabanaC.NTamd64]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, SfxFx.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHabanaC.AddReg, DriverInfo.AddReg
+AddProperty = HdAudBranding.AddProperty
+RegisterDlls=SfxFx.RegisterDlls
+
+[Santafe.NTamd64]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, SfxFx.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitSantafe.AddReg, DriverInfo.AddReg
+AddProperty = HdAudBranding.AddProperty
+RegisterDlls=SfxFx.RegisterDlls
+
+[Hainan.NTamd64]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, SfxFx.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHainan.AddReg, DriverInfo.AddReg
+AddProperty = HdAudBranding.AddProperty
+RegisterDlls=SfxFx.RegisterDlls
+
+[HD_SAM.NTamd64.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+
+[Sedona.NTamd64.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+
+[HabanaB.NTamd64.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+
+[HabanaC.NTamd64.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+
+[Santafe.NTamd64.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+
+[Hainan.NTamd64.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+
+[HD_SAM.NTAMD64.HW]
+AddReg = HdAudSecurity.AddReg
+
+[Sedona.NTAMD64.HW]
+AddReg = HdAudSecurity.AddReg
+
+[HabanaB.NTAMD64.HW]
+AddReg = HdAudSecurity.AddReg
+
+[HabanaC.NTAMD64.HW]
+AddReg = HdAudSecurity.AddReg
+
+[Santafe.NTAMD64.HW]
+AddReg = HdAudSecurity.AddReg
+
+[Hainan.NTAMD64.HW]
+AddReg = HdAudSecurity.AddReg
+
+[HdAud_Service_Install]
+DisplayName   = %UAAFunctionDriverForHdAudio.SvcDesc%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %10%\system32\drivers\ADIHdAud.sys
+
+[HdAudModel.CopyList]
+ADIHdAud.sys
+
+[SfxFx.CopyList]
+srs_apo_suite64.dll,,,0x0100
+Com_SRS_WOWHD64.dll,,,0x0100
+Com_SRS_TruSurroundXT64.dll,,,0x0100
+SRS_APO_Prop_Page64.dll,,,0x0100
+
+[SfxFx.RegisterDlls]
+11,,srs_apo_suite64.dll,1
+11,,com_srs_wowhd64.dll,1
+11,,com_srs_trusurroundxt64.dll,1
+11,,SRS_APO_Prop_Page64.dll,1
+
+[HdAudModel.AddReg]
+HKR,,AssociatedFilters,,"wdmaud,swmidi,redbook"
+HKR,,Driver,,ADIHdAud.sys
+
+HKR,Drivers,SubClasses,,"wave,midi,mixer,aux"
+
+HKR,Drivers\wave\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\midi\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\mixer\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\aux\wdmaud.drv,Driver,,wdmaud.drv
+
+HKR,Drivers\wave\wdmaud.drv,Description,,%HdAudioDeviceDescription%
+HKR,Drivers\midi\wdmaud.drv,Description,,%HdAudioDeviceDescription%
+HKR,Drivers\mixer\wdmaud.drv,Description,,%HdAudioDeviceDescription%
+HKR,Drivers\aux\wdmaud.drv,Description,,%HdAudioDeviceDescription%
+
+HKR,,SetupPreferredAudioDevices,3,01,00,00,00
+HKR,,DisableSetupDiChangeState,1,00,00,00,00 ; Set to 01,00,00,00 to disable proppage restarting of driver on policy change
+
+; Driver global settings
+HKR,GlobalSettings,DcOffsetWorkaround,1,01,00,00,00 ; Applies workaround for recording DC offset issue
+HKR,GlobalSettings,ResetAudioFgOnStart,1,01,00,00,00 ; Enables resetting of audio FG on driver start
+HKR,GlobalSettings,ValidateCodecWrites,1,00,00,00,00 ; Enables readback of writes to codec registers
+HKR,GlobalSettings,SendFakePcxCfgDefVerbs,1,00,00,00,00 ; Enables sending fake pin config default table
+HKR,GlobalSettings,SpdifOutputEchosRearRenderWhenNoAc3,1,00,00,00,00 ; Separate SPDIF from rear panel front channel
+HKR,GlobalSettings,HpShutsOffRearSpeaker,1,00,00,00,00 ; Headphone does not mute rear speakers
+HKCU,Software\Microsoft\Multimedia\Audio,DefaultFormat,,"Default Quality"
+HKCU,Software\Microsoft\Multimedia\Audio\WaveFormats,"Default Quality",1, 01,00,02,00,44,AC,00,00,10,B1,02,00,04,00,10,00
+HKR,GlobalSettings,HpMode,1,01,00,00,00 ; Headphone is slaved to rear panel front channels
+HKR,GlobalSettings,EnableDynamicDevices,1,00,00,00,00 ; Headphone won't come and go dynamically.
+HKR,GlobalSettings,SetSpdifVCfg,1,01,00,00,00 ;  VCfg bit will be set on SPDIF out
+
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedSampleRates44100,1,01,00,00,00 ; By default, supported
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedSampleRates48000,1,01,00,00,00 ; By default, only one supported
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedSampleRates96000,1,00,00,00,00 ; By default, not supported
+
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedBitDepths16,1,01,00,00,00 ; By default, only one supported
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedBitDepths20,1,00,00,00,00 ; By default, not supported
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedBitDepths24,1,00,00,00,00 ; By default, not supported
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedBitDepths32,1,00,00,00,00 ; By default, not supported
+
+HKR,GlobalSettings\\SpdifIn,SpdifInputBitDepth,1,00,00,00,00 ; By default, 16 bit digital capture
+HKR,GlobalSettings\\SpdifIn,SpdifInputSampleRate,1,01,00,00,00; By default, 48KHz digital capture
+
+HKR,PowerSettings,ConservationIdleTime,1,1e,00,00,00
+HKR,PowerSettings,PerformanceIdleTime,1,2c,01,00,00
+HKR,PowerSettings,IdlePowerState,1,04,00,00,00
+
+HKR,GlobalSettings,WaveRTEnabled,1,01 	; 00 = waveCyclic in Vista, 01 = waveRT in Vista
+
+[HdAudInitHD_SAM.AddReg]
+HKR,InitVerbs,NumVerbs,0x00010001, 0x00000014 ; Example: Number of verbs in the init section
+HKR,InitVerbs,0000, 0x00010001, 0x01f70721 ; Mic VRef to 50% 2.25v
+HKR,InitVerbs,0001, 0x00010001, 0x01D70721 ; CLFE Vref to 50% 2.25v
+HKR,InitVerbs,0002, 0x00010001, 0x01A3B01B ; Sets Headphone Volume to -6db unmuted
+HKR,InitVerbs,0003, 0x00010001, 0x01B3B01B ; Sets LineOut Volume to -6db unmuted
+HKR,InitVerbs,0004, 0x00010001, 0x0173B017 ; Sets LINEIN Volume to 0db unmuted
+HKR,InitVerbs,0005, 0x00010001, 0x0153B017 ; Sets CD Volume to 0db unmuted 
+HKR,InitVerbs,0006, 0x00010001, 0x0183B00F ; Sets PCBeepIN Volume to 0db unmuted
+HKR,InitVerbs,0007, 0x00010001, 0x01870101 ; Sets PCBeep Select PCBEEPIN
+HKR,InitVerbs,0008, 0x00010001, 0x0123B000 ; Sets Record Selector to 0db unmuted
+HKR,InitVerbs,0009, 0x00010001, 0x0033B017 ; Sets FRONT DAC Volume to 0db unmuted 
+HKR,InitVerbs,0010, 0x00010001, 0x01A707C0 ; Set HPOUT HP drive enable
+HKR,InitVerbs,0011, 0x00010001, 0x01B707C0 ; Set LineOUT HP drive enable
+HKR,InitVerbs,0012, 0x00010001, 0x00150076; Coefficient Index select 76h
+HKR,InitVerbs,0013, 0x00010001, 0x0014E010; DAC data is zero-filled when DACs are starved for data.
+HKR,InitVerbs,0014, 0x00010001, 0x00270600 ; Set SPDIF DAC Channel/Stream ID to 00
+HKR,InitVerbs,0015, 0x00010001, 0x00370600 ; Set FRONT DAC Channel/Stream ID to 00
+HKR,InitVerbs,0016, 0x00010001, 0x00470600 ; Set SURR DAC Channel/Stream ID to 00
+HKR,InitVerbs,0017, 0x00010001, 0x00570600 ; Set CLFE DAC Channel/Stream ID to 00
+HKR,InitVerbs,0018, 0x00010001, 0x00670600 ; Set RECORD ADC Channel/Stream ID to 00
+HKR,InitVerbs,0019, 0x00010001, 0x02571CA0 ; Set SPDIF Default Association and Sequence to A0
+
+HKR,AD1986, "DesTopo", 1, 01			; Enable Discrete topology for W2K playback.
+HKR,AD1986, "HPWithMaster", 1, 01		; Associate headphone volume with front master volume.
+HKR,AD1986, MicBoostValue, 0x00010001, 0x00000020 ; 20 = 0db (off) + 20db (on) 
+HKR,AD1986, MicR, 1, 05 ; 5 = 7.5db default Mic Record Value
+HKR,AD1986\\Disable, MicBP, 1, 01 ; Disable Mic Boost option on Render Device.
+
+HKLM,Software\SRS Labs\APO,"{66e88ea2-a239-4e1f-82ff-2f45359aec94},0",0x00010001,0x00000001 ;; Enable SRS
+HKLM,Software\SRS Labs\APO,"{66e88ea2-a239-4e1f-82ff-2f45359aec94},1",0x00010001,0x00000000 ;; Select WOW HD
+
+[HdAudInitSedona.AddReg]
+HKR,InitVerbs,NumVerbs,0x00010001, 0x00000013 ; Example: Number of verbs in the init section
+HKR,InitVerbs,0000, 0x00010001, 0x01f70721 ; Mic VRef to 50% 2.25v
+HKR,InitVerbs,0001, 0x00010001, 0x01D70721 ; CLFE Vref to 50% 2.25v
+HKR,InitVerbs,0002, 0x00010001, 0x01A3B01B ; Sets Headphone Volume to -6db unmuted
+HKR,InitVerbs,0003, 0x00010001, 0x01B3B01B ; Sets LineOut Volume to -6db unmuted
+HKR,InitVerbs,0004, 0x00010001, 0x0173B017 ; Sets LINEIN Volume to 0db unmuted
+HKR,InitVerbs,0005, 0x00010001, 0x0153B017 ; Sets CD Volume to 0db unmuted
+HKR,InitVerbs,0006, 0x00010001, 0x0123B000 ; Sets Record Selector to 0db unmuted
+HKR,InitVerbs,0007, 0x00010001, 0x0033B017 ; Sets FRONT DAC Volume to 0db unmuted
+HKR,InitVerbs,0008, 0x00010001, 0x01A707C0 ; Sets HPOUT HP drive enable
+HKR,InitVerbs,0009, 0x00010001, 0x01B707C0 ; Sets LINEOUT HP drive enable
+HKR,InitVerbs,0010, 0x00010001, 0x00150076; Coefficient Index select 76h
+HKR,InitVerbs,0011, 0x00010001, 0x0014E010; DAC data is zero-filled when DACs are starved for data.
+HKR,InitVerbs,0012, 0x00010001, 0x00F3B002 ; Sets MIC BOOST default to 20db
+HKR,InitVerbs,0013, 0x00010001, 0x00270600 ; Set SPDIF DAC Channel/Stream ID to 00
+HKR,InitVerbs,0014, 0x00010001, 0x00370600 ; Set FRONT DAC Channel/Stream ID to 00
+HKR,InitVerbs,0015, 0x00010001, 0x00470600 ; Set SURR DAC Channel/Stream ID to 00
+HKR,InitVerbs,0016, 0x00010001, 0x00570600 ; Set CLFE DAC Channel/Stream ID to 00
+HKR,InitVerbs,0017, 0x00010001, 0x00670600 ; Set RECORD ADC Channel/Stream ID to 00
+HKR,InitVerbs,0018, 0x00010001, 0x02571CA0 ; Set SPDIF Default Association and Sequence to A0
+
+HKLM,Software\SRS Labs\APO,"{66e88ea2-a239-4e1f-82ff-2f45359aec94},0",0x00010001,0x00000001 ;; Enable SRS
+HKLM,Software\SRS Labs\APO,"{66e88ea2-a239-4e1f-82ff-2f45359aec94},1",0x00010001,0x00000000 ;; Select WOW HD
+
+HKR, PowerSettings, PM_EAPD_Mode, 1, 03 ; External Amplifier locked to Vref Power Down (PR3).
+HKR,AD1986, MicBoostValue, 0x00010001, 0x00000020 ; 20 = 0db (off) +20db (on)
+HKR,AD1986, MicR, 1, 05 ; 5 = 7.5db default Mic Record Value
+HKR,AD1986, FPMicEnable, 0x00010001, 0x00000052 ; Rear Mic is FC 2 (CLFE), Front MIC is FC 5 (MIC1)
+HKR,AD1986, JackSense, 0x00010001, 0x00000800; ; Value for legacy mute table 72h
+HKR,AD1986, PINShare, 0x00010001, 0x0000005F ; Sharing SMIC/CLFE 
+HKR,AD1986, "DesTopo", 1, 01			; Enable Discrete topology for W2K playback.
+HKR,AD1986, "HPWithMaster", 1, 01		; Associate headphone volume with front master volume.
+HKR,AD1986\\Disable, MicBP, 1, 01 ; Disable Mic Boost option on Render Device.
+HKR,AD1986\\Disable, MicFPP, 1, 01 ; Disable Mic Selection option on Render Device.
+
+[HdAudInitHabanaB.AddReg]
+HKR,InitVerbs,NumVerbs,0x00010001, 0x00000013 ; Example: Number of verbs in the init section
+HKR,InitVerbs,0000, 0x00010001, 0x01f70721 ; Mic VRef to 50% 2.25v
+HKR,InitVerbs,0001, 0x00010001, 0x01D70721 ; CLFE Vref to 50% 2.25v
+HKR,InitVerbs,0002, 0x00010001, 0x01A3B01B ; Sets Headphone Volume to -6db unmuted
+HKR,InitVerbs,0003, 0x00010001, 0x01B3B01B ; Sets LineOut Volume to -6db unmuted
+HKR,InitVerbs,0004, 0x00010001, 0x0173B017 ; Sets LINEIN Volume to 0db unmuted
+HKR,InitVerbs,0005, 0x00010001, 0x0153B017 ; Sets CD Volume to 0db unmuted
+HKR,InitVerbs,0006, 0x00010001, 0x0123B000 ; Sets Record Selector to 0db unmuted
+HKR,InitVerbs,0007, 0x00010001, 0x0033B017 ; Sets FRONT DAC Volume to 0db unmuted
+HKR,InitVerbs,0008, 0x00010001, 0x01A707C0 ; Sets HPOUT HP drive enable
+HKR,InitVerbs,0009, 0x00010001, 0x01B707C0 ; Sets LINEOUT HP drive enable
+HKR,InitVerbs,0010, 0x00010001, 0x00150076 ; Coefficient Index select 76h
+HKR,InitVerbs,0011, 0x00010001, 0x0014E010 ; DAC data is zero-filled when DACs are starved for data.
+HKR,InitVerbs,0012, 0x00010001, 0x00F3B002 ; Sets MIC BOOST default to 20db
+HKR,InitVerbs,0013, 0x00010001, 0x00270600 ; Set SPDIF DAC Channel/Stream ID to 00
+HKR,InitVerbs,0014, 0x00010001, 0x00370600 ; Set FRONT DAC Channel/Stream ID to 00
+HKR,InitVerbs,0015, 0x00010001, 0x00470600 ; Set SURR DAC Channel/Stream ID to 00
+HKR,InitVerbs,0016, 0x00010001, 0x00570600 ; Set CLFE DAC Channel/Stream ID to 00
+HKR,InitVerbs,0017, 0x00010001, 0x00670600 ; Set RECORD ADC Channel/Stream ID to 00
+HKR,InitVerbs,0018, 0x00010001, 0x02571CA0 ; Set SPDIF Default Association and Sequence to A0
+
+HKLM,Software\SRS Labs\APO,"{66e88ea2-a239-4e1f-82ff-2f45359aec94},0",0x00010001,0x00000001 ;; Enable SRS
+HKLM,Software\SRS Labs\APO,"{66e88ea2-a239-4e1f-82ff-2f45359aec94},1",0x00010001,0x00000000 ;; Select WOW HD
+
+HKR, PowerSettings, PM_EAPD_Mode, 1, 03 ; External Amplifier locked to Vref Power Down (PR3).
+
+HKR,AD1986, "DesTopo", 1, 01			; Enable Discrete topology for W2K playback.
+HKR,AD1986, "HPWithMaster", 1, 01		; Associate headphone volume with front master volume.
+HKR,AD1986, MicBoostValue, 0x00010001, 0x00000020 ; 20 = 0db (off) +20db (on)
+HKR,AD1986, MicR, 1, 05 ; 5 = 7.5db default Mic Record Value
+HKR,AD1986, FPMicEnable, 0x00010001, 0x00000052 ; Rear Mic is FC 2 (CLFE), Front MIC is FC 5 (MIC1)
+HKR,AD1986, JackSense, 0x00010001, 0x00000800; ; Value for legacy mute table 72h
+HKR,AD1986, PINShare, 0x00010001, 0x0000005F ; Sharing SMIC/CLFE 
+HKR,AD1986\\Disable, MicBP, 1, 01 ; Disable Mic Boost option on Render Device.
+HKR,AD1986\\Disable, MicFPP, 1, 01 ; Disable Mic Selection option on Render Device.
+
+[HdAudInitHainan.AddReg]
+HKR,InitVerbs,NumVerbs,0x00010001, 0x00000011 ; Example: Number of verbs in the init section
+HKR,InitVerbs,0000, 0x00010001, 0x01f70721 ; Mic VRef to 50% 2.25v
+HKR,InitVerbs,0001, 0x00010001, 0x01A3B01B ; Sets Headphone Volume to -6db unmuted
+HKR,InitVerbs,0002, 0x00010001, 0x01B3B01B ; Sets LineOut Volume to -6db unmuted
+HKR,InitVerbs,0003, 0x00010001, 0x0173B017 ; Sets LINEIN Volume to 0db unmuted
+HKR,InitVerbs,0004, 0x00010001, 0x0153B017 ; Sets CD Volume to 0db unmuted
+HKR,InitVerbs,0005, 0x00010001, 0x0123B000 ; Sets Record Selector to 0db unmuted
+HKR,InitVerbs,0006, 0x00010001, 0x0033B017 ; Sets FRONT DAC Volume to 0db unmuted
+HKR,InitVerbs,0007, 0x00010001, 0x01A707C0 ; Sets HPOUT HP drive enable
+HKR,InitVerbs,0008, 0x00010001, 0x01B707C0 ; Sets LINEOUT HP drive enable
+HKR,InitVerbs,0009, 0x00010001, 0x00150076 ; Coefficient Index select 76h
+HKR,InitVerbs,0010, 0x00010001, 0x0014E010 ; DAC data is zero-filled when DACs are starved for data.
+HKR,InitVerbs,0011, 0x00010001, 0x00270600 ; Set SPDIF DAC Channel/Stream ID to 00
+HKR,InitVerbs,0012, 0x00010001, 0x00370600 ; Set FRONT DAC Channel/Stream ID to 00
+HKR,InitVerbs,0013, 0x00010001, 0x00470600 ; Set SURR DAC Channel/Stream ID to 00
+HKR,InitVerbs,0014, 0x00010001, 0x00570600 ; Set CLFE DAC Channel/Stream ID to 00
+HKR,InitVerbs,0015, 0x00010001, 0x00670600 ; Set RECORD ADC Channel/Stream ID to 00
+HKR,InitVerbs,0016, 0x00010001, 0x02571CA0 ; Set SPDIF Default Association and Sequence to A0
+
+HKR, PowerSettings, PM_EAPD_Mode, 1, 03 ; External Amplifier locked to Vref Power Down (PR3).
+
+HKLM,Software\SRS Labs\APO,"{66e88ea2-a239-4e1f-82ff-2f45359aec94},0",0x00010001,0x00000001 ;; Enable SRS
+HKLM,Software\SRS Labs\APO,"{66e88ea2-a239-4e1f-82ff-2f45359aec94},1",0x00010001,0x00000000 ;; Select WOW HD
+
+HKR,AD1986, "DesTopo", 1, 01			; Enable Discrete topology for W2K playback.
+HKR,AD1986, "HPWithMaster", 1, 01		; Associate headphone volume with front master volume.
+HKR,AD1986, MicBoostValue, 0x00010001, 0x00000020 ; 20 = 0db (off) +20db (on)
+HKR,AD1986, MicR, 1, 05 ; 5 = 7.5db default Mic Record Value
+HKR,AD1986, JackSense, 0x00010001, 0x00000800; ; Value for legacy mute table 72h
+HKR,AD1986\\Disable, MicBP, 1, 01 ; Disable Mic Boost option on Render Device.
+
+[HdAudInitSantafe.AddReg]
+HKR,InitVerbs,NumVerbs,0x00010001, 0x00000012 ; Example: Number of verbs in the init section
+HKR,InitVerbs,0000, 0x00010001, 0x01D70721 ; CLFE Vref to 50% 2.25v
+HKR,InitVerbs,0001, 0x00010001, 0x01A3B01B ; Sets Headphone Volume to -6db unmuted
+HKR,InitVerbs,0002, 0x00010001, 0x01B3B01B ; Sets LineOut Volume to -6db unmuted
+HKR,InitVerbs,0003, 0x00010001, 0x00F70102 ; Sets MICIN MUX with CLFE Pins
+HKR,InitVerbs,0004, 0x00010001, 0x0153B017 ; Sets CD Volume to 0db unmuted
+HKR,InitVerbs,0005, 0x00010001, 0x0123B000 ; Sets Record Selector to 0db unmuted
+HKR,InitVerbs,0006, 0x00010001, 0x0033B017 ; Sets FRONT DAC Volume to 0db unmuted
+HKR,InitVerbs,0007, 0x00010001, 0x01A707C0 ; Sets HPOUT HP drive enable
+HKR,InitVerbs,0008, 0x00010001, 0x01B707C0 ; Sets LINEOUT HP drive enable
+HKR,InitVerbs,0009, 0x00010001, 0x00150076 ; Coefficient Index select 76h
+HKR,InitVerbs,0010, 0x00010001, 0x0014E010 ; DAC data is zero-filled when DACs are starved for data.
+HKR,InitVerbs,0011, 0x00010001, 0x00F3B002 ; Sets MIC BOOST default to 20db
+HKR,InitVerbs,0012, 0x00010001, 0x00270600 ; Set SPDIF DAC Channel/Stream ID to 00
+HKR,InitVerbs,0013, 0x00010001, 0x00370600 ; Set FRONT DAC Channel/Stream ID to 00
+HKR,InitVerbs,0014, 0x00010001, 0x00470600 ; Set SURR DAC Channel/Stream ID to 00
+HKR,InitVerbs,0015, 0x00010001, 0x00570600 ; Set CLFE DAC Channel/Stream ID to 00
+HKR,InitVerbs,0016, 0x00010001, 0x00670600 ; Set RECORD ADC Channel/Stream ID to 00
+HKR,InitVerbs,0017, 0x00010001, 0x02571CA0 ; Set SPDIF Default Association and Sequence to A0
+
+HKLM,Software\SRS Labs\APO,"{66e88ea2-a239-4e1f-82ff-2f45359aec94},0",0x00010001,0x00000001 ;; Enable SRS
+HKLM,Software\SRS Labs\APO,"{66e88ea2-a239-4e1f-82ff-2f45359aec94},1",0x00010001,0x00000000 ;; Select WOW HD
+
+HKR, PowerSettings, PM_EAPD_Mode, 1, 01 ; External Amplifier locked to DAC Power Down (PR1).
+HKR, PowerSettings, PM_Power_Mode, 1, 01 ; power savings mode 1.
+HKR, PowerSettings, PM_Last_Valid_Power_Mode_AC, 1, 00 ; High power savings permitted while running on power adapter.
+
+HKR,AD1986\\Disable, MicBP, 1, 01 ; Disable Mic Boost option on Render Device.
+HKR,AD1986\\Disable, "MicV", 1, 01
+HKR,AD1986,JackSense, 0x00010001, 0x00000800; ; Value for legacy mute table 72h
+HKR,AD1986,PINShare, 0x00010001, 0x0000005F ; Sharing SMIC/CLFE
+HKR,AD1986, "DesTopo", 1, 01			; Enable Discrete topology for W2K playback.
+HKR,AD1986, "HPWithMaster", 1, 01		; Associate headphone volume with front master volume.
+HKR,AD1986, MicBoostValue, 0x00010001, 0x00000020 ; 20 = 0db (off) + 20db (on)
+HKR,AD1986, MicR, 1, 05 ; 5 = 7.5db default Mic Record Value
+
+[HdAudInitHabanaC.AddReg]
+HKR,InitVerbs,NumVerbs,0x00010001, 0x00000010 ; Example: Number of verbs in the init section
+HKR,InitVerbs,0000, 0x00010001, 0x01f70721 ; Mic VRef to 50% 2.25v
+HKR,InitVerbs,0001, 0x00010001, 0x01A3B01B ; Sets Headphone Volume to -6db unmuted
+HKR,InitVerbs,0002, 0x00010001, 0x01B3B01B ; Sets LineOut Volume to -6db unmuted
+HKR,InitVerbs,0003, 0x00010001, 0x0153B017 ; Sets CD Volume to 0db unmuted
+HKR,InitVerbs,0004, 0x00010001, 0x0123B000 ; Sets Record Selector to 0db unmuted
+HKR,InitVerbs,0005, 0x00010001, 0x0033B017 ; Sets FRONT DAC Volume to 0db unmuted
+HKR,InitVerbs,0006, 0x00010001, 0x01A707C0 ; Sets HPOUT HP drive enable
+HKR,InitVerbs,0007, 0x00010001, 0x01B707C0 ; Sets LINEOUT HP drive enable
+HKR,InitVerbs,0008, 0x00010001, 0x00150076 ; Coefficient Index select 76h
+HKR,InitVerbs,0009, 0x00010001, 0x0014E010 ; DAC data is zero-filled when DACs are starved for data.
+HKR,InitVerbs,0010, 0x00010001, 0x00270600 ; Set SPDIF DAC Channel/Stream ID to 00
+HKR,InitVerbs,0011, 0x00010001, 0x00370600 ; Set FRONT DAC Channel/Stream ID to 00
+HKR,InitVerbs,0012, 0x00010001, 0x00470600 ; Set SURR DAC Channel/Stream ID to 00
+HKR,InitVerbs,0013, 0x00010001, 0x00570600 ; Set CLFE DAC Channel/Stream ID to 00
+HKR,InitVerbs,0014, 0x00010001, 0x00670600 ; Set RECORD ADC Channel/Stream ID to 00
+HKR,InitVerbs,0015, 0x00010001, 0x02571CA0 ; Set SPDIF Default Association and Sequence to A0
+
+HKLM,Software\SRS Labs\APO,"{66e88ea2-a239-4e1f-82ff-2f45359aec94},0",0x00010001,0x00000001 ;; Enable SRS
+HKLM,Software\SRS Labs\APO,"{66e88ea2-a239-4e1f-82ff-2f45359aec94},1",0x00010001,0x00000000 ;; Select WOW HD
+
+HKR, PowerSettings, PM_EAPD_Mode, 1, 03 ; External Amplifier locked to Vref Power Down (PR3).
+
+HKR,AD1986, "DesTopo", 1, 01			; Enable Discrete topology for W2K playback.
+HKR,AD1986, "HPWithMaster", 1, 01		; Associate headphone volume with front master volume.
+HKR,AD1986, MicBoostValue, 0x00010001, 0x00000020 ; 20 = 0db (off) + 20db (on)
+HKR,AD1986, MicR, 1, 05 ; 5 = 7.5db default Mic Record Value
+HKR,AD1986,JackSense, 0x00010001, 0x00000800; ; Value for legacy mute table 72h
+HKR,AD1986\\Disable, MicBP, 1, 01 ; Disable Mic Boost option on Render Device.
+
+[HdAudBranding.AddProperty]
+DeviceVendorWebSite,,,,"http://www.analog.com"
+
+[HdAud.DelReg]
+HKR, Drivers
+HKR, GlobalSettings
+HKR, Branding
+HKR, InitVerbs
+HKR, RemVerbs
+HKR, PowerSettings
+HKR, Sensaura\Configuration
+HKR, Sensaura\State
+HKR, AD1986
+HKR, AD1983
+HKR, AD1981
+HKR, AD1988
+HKR, EQSettings
+;HKR, PinConfigOverrideVerbs
+HKCU,%HKCU_IFRegPath%			;;	
+HKLM,%HKLM_IFRegPath%			;;		
+HKCU,%HKCU_PnPRegPath%			;;
+HKLM,%HKLM_PnPRegPath%			;;
+HKLM,%WindowsRunKey%,"SoundMAXPnP"
+HKLM,%WindowsAppPaths%\smwdmif.dll
+HKLM,%WindowsAppPaths%\smax4pnp.exe
+HKLM,%WindowsAppPaths%\SMaxCore
+HKLM, SYSTEM\CurrentControlSet\Services\AeaudioService
+HKLM, Software\SRS Labs\APO 
+HKLM,%WindowsCPDirect%\Cpls,"SmaxESP"	;;smaxesp.cpl
+
+[HD_SAM.NTAMD64.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[Sedona.NTAMD64.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, ST.HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HabanaB.NTAMD64.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HabanaC.NTAMD64.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[Santafe.NTAMD64.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, ST.HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[Hainan.NTAMD64.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_REALTIME%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+; Rear line out
+[HdAudModel.RearLineOutWave]
+AddReg = HdAudModel.RearLineOutWave.AddReg, HdAudModel.CommonWave.AddReg
+
+[HdAudModel.RearLineOutWave.AddReg]
+HKR,,FriendlyName,,%RearLineOutWaveDeviceName%
+;HKR,,FriendlyName,,%RearLineOutDacName%
+
+[HdAudModel.CommonWave.AddReg]
+HKR,,CLSID,,%Proxy.CLSID%
+
+;IntHdAudGuid.RearLineOutDac
+HKLM,%MediaCategories%\%HdAudGuidRearLineOutDac%,Name,,%RearLineOutDacName%
+HKLM,%MediaCategories%\%HdAudGuidRearLineOutDac%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%HdAudGuidDisableDigitalOutput%,Name,,%DisableDigitalOutputName%
+HKLM,%MediaCategories%\%HdAudGuidDisableDigitalOutput%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%HdAudGuidFrontHPOutDac%,Name,,%FrontHPOutDacName%
+HKLM,%MediaCategories%\%HdAudGuidFrontHPOutDac%,Display,1,00,00,00,00
+
+HKLM,%MediaCategories%\%ADIGUID.Front%,Name,,%Pin.Front%
+HKLM,%MediaCategories%\%ADIGUID.Front%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.Surround%,Name,,%Pin.Surround%
+HKLM,%MediaCategories%\%ADIGUID.Surround%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.Center%,Name,,%Pin.Center%
+HKLM,%MediaCategories%\%ADIGUID.Center%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.Lfe%,Name,,%Pin.Lfe%
+HKLM,%MediaCategories%\%ADIGUID.Lfe%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.CLfe%,Name,,%Pin.CLfe%
+HKLM,%MediaCategories%\%ADIGUID.CLfe%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.SwapC%,Name,,%Control.SwapC%
+HKLM,%MediaCategories%\%ADIGUID.SwapC%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.FPMicSel%,Name,,%Control.MicSelect%
+HKLM,%MediaCategories%\%ADIGUID.FPMicSel%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.PcBeep%,Name,,%Pin.PcBeep%
+HKLM,%MediaCategories%\%ADIGUID.PcBeep%,Display,1,00,00,00,00
+
+[HdAudModel.RearLineOutTopo]
+DelReg = APO.DelReg
+AddReg = HdAudModel.RearLineOutTopo.AddReg, SRS_SysFx.AddReg, SRS_OEMSettingsOverride.Addreg
+
+[APO.DelReg]
+HKR,EP
+HKR,FX
+
+[SRS_SysFx.AddReg]
+HKR,"FX\\0",%PKEY_ItemNameDisplay%,,%SRS_FX_FriendlyName%
+HKR,"FX\\0",%PKEY_FX_PreMixClsid%,,%SRS_FX_PREMIX_CLSID%
+HKR,"FX\\0",%PKEY_FX_PostMixClsid%,,%SRS_FX_POSTMIX_CLSID%
+HKR,"FX\\0",%PKEY_FX_UiClsid%,,%SRS_FX_UI_CLSID%
+HKR,"FX\\0",%PKEY_FX_Association%,,%KSNODETYPE_ANY%  ; GUID NULL means install on all endpoints
+                                                     ; supply a specific GUID to install on a particular bridge pin node type
+HKR, "FX\\0", %PKEY_SRS_Enable_LFX%,%REG_DWORD%,1
+
+[SRS_OEMSettingsOverride.AddReg]
+HKR,"EP\\0", %PKEY_AudioEndpoint_Association%,,%KSNODETYPE_SPEAKER%
+HKR,"EP\\0", %PKEY_AudioEngine_OEMFormat%, %REG_BINARY%, 41,00,8C,70,28,00,00,00,FE,FF,02,00,80,BB,00,00,00,EE,02,00,04,00,10,00,16,00,10,00,03,00,00,00,01,00,00,00,00,00,10,00,80,00,00,AA,00,38,9B,71
+HKR,"EP\\0", %PKEY_AudioEndpoint_Ext_UiClsid%,,%AUDIOENDPOINT_EXT_UI_CLSID%
+HKR,"EP\\0", %PKEY_SRS_LFX_Enable%,%REG_DWORD%,1
+
+[HdAudModel.RearLineOutTopo.AddReg]
+HKR,,FriendlyName,,%RearLineOutTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Rear line in
+
+[HdAudModel.RearLineInWave]
+AddReg = HdAudModel.RearLineInWave.AddReg
+
+[HdAudModel.RearLineInWave.AddReg]
+HKR,,FriendlyName,,%RearLineInWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.RearLineInTopo]
+DelReg = APO.DelReg
+AddReg = HdAudModel.RearLineInTopo.AddReg
+
+[ST.HdAudModel.RearLineInTopo]
+DelReg = APO.DelReg
+AddReg = HdAudModel.RearLineInTopo.AddReg
+
+[HdAudModel.RearLineInTopo.AddReg]
+HKR,,FriendlyName,,%RearLineInTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Front panel headphone
+
+[HdAudModel.FrontPanelHeadphoneWave]
+AddReg = HdAudModel.FrontPanelHeadphoneWave.AddReg
+
+[HdAudModel.FrontPanelHeadphoneWave.AddReg]
+HKR,,FriendlyName,,%FrontPanelHeadphoneWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.FrontPanelHeadphoneTopo]
+DelReg = APO.DelReg
+AddReg = HdAudModel.FrontPanelHeadphoneTopo.AddReg
+
+[HdAudModel.FrontPanelHeadphoneTopo.AddReg]
+HKR,,FriendlyName,,%FrontPanelHeadphoneTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Front panel mic
+
+[HdAudModel.FrontPanelMicWave]
+AddReg = HdAudModel.FrontPanelMicWave.AddReg
+
+[HdAudModel.FrontPanelMicWave.AddReg]
+HKR,,FriendlyName,,%FrontPanelMicWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.FrontPanelMicTopo]
+DelReg = APO.DelReg
+AddReg = HdAudModel.FrontPanelMicTopo.AddReg
+
+[HdAudModel.FrontPanelMicTopo.AddReg]
+HKR,,FriendlyName,,%FrontPanelMicTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Digital output
+
+[HdAudModel.DigitalOutputWave]
+AddReg = HdAudModel.DigitalOutputWave.AddReg
+
+[HdAudModel.DigitalOutputWave.AddReg]
+HKR,,FriendlyName,,%DigitalOutputWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.DigitalOutputTopo]
+DelReg = APO.DelReg
+AddReg = HdAudModel.DigitalOutputTopo.AddReg
+
+[HdAudModel.DigitalOutputTopo.AddReg]
+HKR,,FriendlyName,,%DigitalOutputTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Digital input
+
+[HdAudModel.DigitalInputWave]
+AddReg = HdAudModel.DigitalInputWave.AddReg
+
+[HdAudModel.DigitalInputWave.AddReg]
+HKR,,FriendlyName,,%DigitalInputWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.DigitalInputTopo]
+DelReg = APO.DelReg
+AddReg = HdAudModel.DigitalInputTopo.AddReg
+
+[HdAudModel.DigitalInputTopo.AddReg]
+HKR,,FriendlyName,,%DigitalInputTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Microphone Array
+
+[HdAudModel.MicArrayWave]
+AddReg = HdAudModel.MicArrayWave.AddReg
+
+[HdAudModel.MicArrayWave.AddReg]
+HKR,,FriendlyName,,%MicArrayWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.MicArrayTopo]
+DelReg = APO.DelReg
+AddReg = HdAudModel.MicArrayTopo.AddReg
+
+[HdAudModel.MicArrayTopo.AddReg]
+HKR,,FriendlyName,,%MicArrayTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Auxiliary Input
+
+[HdAudModel.AuxInWave]
+AddReg = HdAudModel.AuxInWave.AddReg
+
+[HdAudModel.AuxInWave.AddReg]
+HKR,,FriendlyName,,%AuxInWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.AuxInTopo]
+DelReg = APO.DelReg
+AddReg = HdAudModel.AuxInTopo.AddReg
+
+[HdAudModel.AuxInTopo.AddReg]
+HKR,,FriendlyName,,%AuxInTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Complex Device
+
+[HdAudModel.CmplxWave]
+AddReg = HdAudModel.CmplxWave.AddReg, HdAudModel.CommonWave.AddReg
+
+[HdAudModel.CmplxWave.AddReg]
+HKR,,FriendlyName,,%SMXWaveDeviceName%
+
+[HdAudModel.CmplxTopo]
+DelReg = APO.DelReg
+AddReg = HdAudModel.CmplxTopo.AddReg, SRS_SysFx.AddReg, SRS_OEMSettingsOverride.Addreg
+
+[HdAudModel.CmplxTopo.AddReg]
+HKR,,FriendlyName,,%SMXTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudSecurity.AddReg]
+; FILE_DEVICE_SOUND
+HKR,,DeviceType,0x10001,0x0000001D
+; SDDL_DEVOBJ_SYS_ALL_ADM_RWX_WORLD_RWX_RES_RWX
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GRGWGX;;;BA)(A;;GRGWGX;;;WD)(A;;GRGWGX;;;RC)"
+
+[Strings]
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+ADI="AnalogDevices"
+AnalogDevices.Mfg="Analog Devices"
+
+; localizable
+DiskId1 = "Installation Disk"
+HdAudioFunctionDriver.ADICodec.DeviceDesc = "SoundMAX Integrated Digital HD Audio"
+
+UAAFunctionDriverForHdAudio.SvcDesc = "ADI UAA Function Driver for High Definition Audio Service"
+
+RearLineOutWaveDeviceName =        "SoundMAX HD Audio O"
+RearLineOutDacName =               "HD Audio rear line out"
+RearLineInWaveDeviceName =         "SoundMAX HD Audio I"
+RearMicInWaveDeviceName =          "HD Audio rear mic"
+FrontPanelHeadphoneWaveDeviceName ="HD Audio front headphone"
+FrontHPOutDacName =                "HD Audio front headphone"
+FrontPanelMicWaveDeviceName =      "HD Audio front mic"
+DigitalOutputWaveDeviceName =      "HD Audio digital out"
+DigitalInputWaveDeviceName =       "HD Audio digital in"
+MicArrayWaveDeviceName =           "HD Audio mic array"
+AuxInWaveDeviceName =              "HD Audio aux in"
+SMXWaveDeviceName =		   "SoundMAX HD Audio"
+
+RearLineOutTopoDeviceName =        "HD Audio rear output mixer"
+RearLineInTopoDeviceName =         "HD Audio rear input mixer"
+RearMicInTopoDeviceName =          "HD Audio rear mic mixer"
+FrontPanelHeadphoneTopoDeviceName ="HD Audio front headphone mixer"
+FrontPanelMicTopoDeviceName =      "HD Audio front mic mixer"
+DigitalOutputTopoDeviceName =      "HD Audio digital out mixer"
+DigitalInputTopoDeviceName =       "HD Audio digital in mixer"
+MicArrayTopoDeviceName =           "HD Audio mic array mixer" 
+AuxInTopoDeviceName =              "HD Audio aux in mixer"
+SMXTopoDeviceName =                "SoundMAX HD Audio mixer"
+
+DisableDigitalOutputName	  ="Disable Digital Output"
+HdAudioDeviceDescription = "ADI UAA Function Driver for High Definition Audio"
+
+; non localizable
+
+KSNAME_RearLineOutWave="RearLineOutWave"
+KSNAME_RearLineInWave="RearLineInWave"
+KSNAME_FrontPanelHeadphoneWave="FrontPanelHeadphoneWave"
+KSNAME_FrontPanelMicWave="FrontPanelMicWave"
+KSNAME_DigitalOutputWave="DigitalOutputWave"
+KSNAME_DigitalInputWave="DigitalInputWave"
+KSNAME_MicArrayWave="MicArrayWave"
+KSNAME_AuxInWave="AuxInputWave"
+KSNAME_CmplxWave="CmplxWave"
+
+KSNAME_RearLineOutTopo="RearLineOutTopo"
+KSNAME_RearLineInTopo="RearLineInTopo"
+KSNAME_FrontPanelHeadphoneTopo="FrontPanelHeadphoneTopo"
+KSNAME_FrontPanelMicTopo="FrontPanelMicTopo"
+KSNAME_DigitalOutputTopo="DigitalOutputTopo"
+KSNAME_DigitalInputTopo="DigitalInputTopo"
+KSNAME_MicArrayTopo="MicArrayTopo"
+KSNAME_AuxInTopo="AuxInputTopo"
+KSNAME_CmplxTopo="CmplxTopo"
+
+ADIGUID.Front       ="{992C636A-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.Surround    ="{992C6365-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.Center      ="{992C6364-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.Lfe         ="{992C6363-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.CLfe        ="{E1FB4CDC-0FF6-4722-8B7E-B93CCC6F82C6}"
+ADIGUID.SwapC       ="{A3156CDD-A925-4A37-BD1F-BC9D627F3F06}"
+ADIGUID.FPMicSel    ="{992C638D-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.PcBeep      ="{992C6360-643D-11D2-9BDC-00A0C9696B7D}"
+
+Pin.Front        ="Front"            ; Front Output
+Pin.Surround     ="Rear"             ; Surround Output
+Pin.Center       ="Center"           ; Center Channel Output
+Pin.Lfe          ="Subwoofer"        ; Sub woofer ( Lfe )
+Pin.CLfe         ="Sub/Cen"          ; Sub Center/LFE
+Pin.PcBeep       ="PC Beep"          ; PC Beep Volume Control
+
+Control.SwapC	 ="Swap Center/Subwoofer"
+Control.MicSelect="Front Mic Select"     ; Microphone advanced control
+
+KSCATEGORY_AUDIO = "{6994AD04-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_TOPOLOGY="{DDA54A40-1E4C-11D1-A050-405705C10000}"
+KSCATEGORY_REALTIME="{EB115FFC-10C8-4964-831D-6DCB02E6F23F}"
+Proxy.CLSID ="{17CCA71B-ECD7-11D0-B908-00A0C9223196}"
+
+; guids for rear line out
+HdAudGuidRearLineOutDac= "{EEF86A90-3742-4974-B8D2-5370E1C540F6}"
+HdAudGuidFrontHPOutDac = "{497B34AD-D67F-411c-8076-80D5B4250D67}"
+HdAudGuidDisableDigitalOutput = "{F06BB67D-5C2F-48ad-A307-B449E3B217D6}"
+
+HKCU_IFRegPath="SOFTWARE\Analog Devices\SMWDMIF"					;;64FlatImprove
+HKLM_IFRegPath="SOFTWARE\Wow6432Node\Analog Devices\SMWDMIF"				;;64FlatImprove
+WindowsRunKey="Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Run"		;;64FlatImprove
+WindowsAppPaths="SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\App Paths"	;;64FlatImprove
+HKCU_PnPRegPath="Software\Analog Devices\smax4pnp"					;;64FlatImprove
+HKLM_PnPRegPath="Software\Wow6432Node\Analog Devices\smax4pnp"				;;64FlatImprove
+WindowsCPDirect="SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel"	;;smaxesp.cpl
+
+PKEY_FX_Association  = "{D04E05A6-594B-4fb6-A80D-01AF5EED7D1D},0"
+PKEY_FX_PreMixClsid  = "{D04E05A6-594B-4fb6-A80D-01AF5EED7D1D},1"
+PKEY_FX_PostMixClsid = "{D04E05A6-594B-4fb6-A80D-01AF5EED7D1D},2"
+PKEY_FX_UiClsid      = "{D04E05A6-594B-4fb6-A80D-01AF5EED7D1D},3"
+PKEY_ItemNameDisplay = "{B725F130-47EF-101A-A5F1-02608C9EEBAC},10"
+PKEY_AudioEndpoint_Disable_SysFx = "{1da5d803-d492-4edd-8c23-e0c0ffee7f0e},5"
+PKEY_AudioEndpoint_Ext_UiClsid   = "{1DA5D803-D492-4EDD-8C23-E0C0FFEE7F0E},1"
+PKEY_AudioEndpoint_Association   = "{1DA5D803-D492-4EDD-8C23-E0C0FFEE7F0E},2"
+PKEY_AudioEngine_OEMFormat = "{E4870E26-3CC5-4CD2-BA46-CA0A9A70ED04},3"
+
+KSNODETYPE_ANY = "{00000000-0000-0000-0000-000000000000}"
+KSNODETYPE_LINE_CONNECTOR = "{DFF21FE3-F70F-11D0-B917-00A0C9223196}"
+KSNODETYPE_MICROPHONE = "{DFF21BE1-F70F-11D0-B917-00A0C9223196}"
+KSNODETYPE_MICROPHONE_ARRAY = "{DFF21BE5-F70F-11D0-B917-00A0C9223196}"
+KSNODETYPE_SPEAKER = "{DFF21CE1-F70F-11D0-B917-00A0C9223196}"
+AUDIOENDPOINT_EXT_UI_CLSID = "{6C57B2A2-91F5-4b90-93D5-FAB82485ECA6}"
+
+REG_BINARY  = 0x00000001
+REG_DWORD = 0x00010001
+
+PKEY_SRS_LFX_Enable = "{66E88EA2-A239-4e1f-82FF-2F45359AEC94},0"
+PKEY_SRS_Enable_LFX = "{66E88EA2-A239-4e1f-82FF-2F45359AEC94}, 0"
+
+SRS_FX_UI_CLSID = "{013CBB27-A6C9-4268-900D-9D87A87380AC}"
+SRS_FX_PREMIX_CLSID = "{1A0B89A1-2C5F-4531-BE63-0E24C1B5BC9C}"
+SRS_FX_POSTMIX_CLSID = "{00000000-0000-0000-0000-000000000000}"
+SRS_FX_FriendlyName = "Audio Technologies from SRS Labs"
+
+; History Information
+DriverMfgr="AnalogDevices"
+DriverVersionID="6.10.5140"
+DriverBuildDate="11/17/2006"
+DriverBuildID="6.10.02.5140"
+INFVersionID="6.10.02.5140-0009"
+DriverOEM="AnalogDevices"
+DriverFamily="Audio"
+DriverProduct="SoundMAX"
+DriverDescription="Audio Driver"	
+DriverOEMVersion="x00"
+

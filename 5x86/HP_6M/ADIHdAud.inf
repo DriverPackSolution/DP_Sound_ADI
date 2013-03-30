@@ -1,0 +1,3015 @@
+;Copyright (c) Analog Devices, Inc. 2008
+; HP_MOBILE
+; SoundMAX package [6]
+;
+;Module Name:
+;    ADIHDAUD.INF
+;
+;Abstract:
+;    INF file for installing the ADI UAA Function Driver for High Definition Audio
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=MEDIA
+ClassGuid={4d36e96c-e325-11ce-bfc1-08002be10318}
+Provider=%ADI%
+DriverVer = 04/24/2008,%DriverBuildID%
+CatalogFile=smx.cat
+
+[DestinationDirs]
+DefaultDestDir      =10; dirid = \system32\drivers
+HdAudModel.CopyList =10,system32\drivers
+Core.CopyList = 16422,%CoreFilePath%
+Coinst.CopyFiles = 10, system32
+DRM.CopyList = 11
+
+[DriverInfo.DelReg]
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%
+
+[DriverInfo.AddReg]
+; This section is added to all INFs to add registry entries for Driver Information.						
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,Description,,%DriverDescription%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,CurrentVer,,%DriverOEMVersion%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,Ver_%DriverOEMVersion%,,%DriverVersionID%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%, DriverBuildDate,,%DriverBuildDate%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%, BaseDriverFileName,,"ADIHdAud.sys"
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%, BaseDriverFileVersion,,"5.10.5240"
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%, INFVersion,,%INFVersionID%
+
+[SourceDisksNames]
+222=%DiskId1%,"",222
+
+[SourceDisksFiles]
+ADIHdAud.sys=222
+smwdmif.dll=222
+smax4pnp.exe=222
+postproc.dll=222
+aeaudio.sys=222
+adidrm.dll=222
+
+[Manufacturer]
+%AnalogDevices.Mfg%=AnalogDevices
+
+;============================================================================
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[AnalogDevices]
+
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdAudCaymus2, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30AC
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdAudCaymus2, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30AD
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdAudCaymus2, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C3021
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdAngelFire, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C309F
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdAudOpus1, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30A1
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdAudGallo1, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30A2
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdVail2, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30A3
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdAudDavos3, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30AA
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdAudHeavenly2, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30B1
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdTaos2, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30B0
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdChimay, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30BE
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdChimay, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30BE
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdChimayDisc, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30C1
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdAbita, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30C3
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdSapporo, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30C9
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdOptimator, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30C8
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdVB, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30C5
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdDosXXandDunkel, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30C0
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdDukstienandDuval, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30D8
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdTecateandTsingtao, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30C2
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdDrax, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C30D7
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdSuzhouANandKV, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C3026
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdAudProton1, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C3606
+%HdAudioFunctionDriver.ADICodec.DeviceDesc% = HdVostokandVelvet, HDAUDIO\FUNC_01&VEN_11D4&DEV_1981&subsys_103C3618
+
+[HdAudCaymus2]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdAudCaymus2EQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdAngelFire]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdAngelFireEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdAudOpus1]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdAudOpus1EQ.AddReg, DriverInfo.AddReg
+
+[HdAudGallo1]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdAudGallo1EQ.AddReg, DriverInfo.AddReg
+
+[HdAudProton1]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdAudGallo1EQ.AddReg, DriverInfo.AddReg
+
+[HdVail2]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdAudVail2EQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdAudDavos3]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdAudDavos3EQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdAudHeavenly2]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdAudHeavenly2EQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdTaos2]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdAudTaos2EQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdChimay]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdChimayEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdChimayDisc]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdChimayEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdAbita]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList, DRM.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdAbitaEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdSapporo]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdSapporoEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdOptimator]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdOptimatorEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg, Beamforming.AddReg
+
+[HdVB]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdVictoriaBitterEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdDosXXandDunkel]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdDDandTTplatformsEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdDukstienandDuval]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdDDDplatformsEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdTecateandTsingtao]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdDDandTTplatformsEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdDrax]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdDDDplatformsEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdVostokandVelvet]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdDDandTTplatformsEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdSuzhouANandKV]
+Include=ks.inf,wdmaudio.inf
+Needs=KS.Registration,WDMAUDIO.Registration
+DelReg=HdAud.DelReg, DriverInfo.DelReg
+CopyFiles = HdAudModel.CopyList, Core.CopyList
+AddReg    = HdAudModel.AddReg, HdAudInitHP_M.AddReg, HpMobileCommon.AddReg, HdAudBranding.AddReg, HdSuzhouplatformsEQ.AddReg, FrontPanel.AddReg, DriverInfo.AddReg
+
+[HdAudCaymus2.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdAngelFire.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdAudOpus1.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdAudGallo1.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdAudProton1.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdVail2.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdAudDavos3.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdAudHeavenly2.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdTaos2.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdChimay.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdChimayDisc.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdAbita.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdSapporo.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdOptimator.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdVB.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdDosXXandDunkel.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdDukstienandDuval.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdTecateandTsingtao.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdDrax.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdSuzhouANandKV.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdVostokandVelvet.Services]
+AddService=ADIHdAudAddService, 0x00000002, HdAud_Service_Install
+AddService=AEAudio,0x00000000, AEAudio_Service_Install		;; AEAUDIO
+
+[HdAudCaymus2.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdAngelFire.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdAudOpus1.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdAudGallo1.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdAudProton1.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdVail2.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdAudDavos3.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdAudHeavenly2.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdTaos2.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdChimay.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdChimayDisc.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdAbita.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdSapporo.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdOptimator.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdVB.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdDosXXandDunkel.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdDukstienandDuval.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdTecateandTsingtao.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdDrax.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdSuzhouANandKV.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdVostokandVelvet.CoInstallers]
+AddReg          = Coinst.AddReg
+CopyFiles       = Coinst.CopyFiles
+
+[HdAudCaymus2.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdAngelFire.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdAudOpus1.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdAudGallo1.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdAudProton1.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdVail2.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdAudDavos3.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdAudHeavenly2.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdTaos2.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdChimay.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdChimayDisc.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdAbita.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdSapporo.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdOptimator.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdVB.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdDosXXandDunkel.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdDukstienandDuval.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdTecateandTsingtao.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdDrax.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdSuzhouANandKV.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[HdVostokandVelvet.HW]
+AddReg = HdAudSecurity.AddReg, AEAudio.AddReg
+
+[Coinst.AddReg]
+HKR,,CoInstallers32,0x10000,"PostProc.dll,PostProc"
+
+[Coinst.CopyFiles]
+PostProc.dll,,,0x00000004
+
+[HdAud_Service_Install]
+DisplayName   = %UAAFunctionDriverForHdAudio.SvcDesc%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %10%\system32\drivers\ADIHdAud.sys
+
+[AEAudio_Service_Install]				;; AEAUDIO
+DisplayName   = %AEAudio.SvcDesc%			;; AEAUDIO
+ServiceType   = 1					;; AEAUDIO	
+StartType     = 3					;; AEAUDIO
+ErrorControl  = 1					;; AEAUDIO
+ServiceBinary = %10%\system32\drivers\AEAudio.sys	;; AEAUDIO	
+
+[HdAudModel.CopyList]
+ADIHdAud.sys
+aeaudio.sys
+
+[Core.CopyList]
+smwdmif.dll
+smax4pnp.exe
+
+[DRM.CopyList]
+adidrm.dll
+	
+
+[HdAudModel.AddReg]
+HKR,,AssociatedFilters,,"wdmaud,swmidi,redbook"
+HKR,,Driver,,ADIHdAud.sys
+
+HKR,Drivers,SubClasses,,"wave,midi,mixer,aux"
+
+HKR,Drivers\wave\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\midi\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\mixer\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\aux\wdmaud.drv,Driver,,wdmaud.drv
+
+HKR,Drivers\wave\wdmaud.drv,Description,,%HdAudioDeviceDescription%
+HKR,Drivers\midi\wdmaud.drv,Description,,%HdAudioDeviceDescription%
+HKR,Drivers\mixer\wdmaud.drv,Description,,%HdAudioDeviceDescription%
+HKR,Drivers\aux\wdmaud.drv,Description,,%HdAudioDeviceDescription%
+
+HKR,,SetupPreferredAudioDevices,3,01,00,00,00
+HKR,,DisableSetupDiChangeState,1,00,00,00,00 ; Set to 01,00,00,00 to disable proppage restarting of driver on policy change
+
+; Driver global settings
+HKR,GlobalSettings,DcOffsetWorkaround,1,01,00,00,00 ; Applies workaround for recording DC offset issue
+HKR,GlobalSettings,ResetAudioFgOnStart,1,01,00,00,00 ; Enables resetting of audio FG on driver start
+HKR,GlobalSettings,ValidateCodecWrites,1,00,00,00,00 ; Enables readback of writes to codec registers
+HKR,GlobalSettings,SendFakePcxCfgDefVerbs,1,00,00,00,00 ; Enables sending fake pin config default table
+HKR,GlobalSettings,SpdifOutputEchosRearRenderWhenNoAc3,1,01,00,00,00 ; Slaves rear panel front channels to SPDIF
+HKCU,Software\Microsoft\Multimedia\Audio,DefaultFormat,,"Default Quality"
+HKCU,Software\Microsoft\Multimedia\Audio\WaveFormats,"Default Quality",1, 01,00,02,00,44,AC,00,00,10,B1,02,00,04,00,10,00
+HKR,GlobalSettings,EnableDynamicDevices,1,00,00,00,00 ; Headphone won't come and go dynamically.
+HKR,GlobalSettings,SetSpdifVCfg,1,01,00,00,00 ;  VCfg bit will be set on SPDIF out
+HKR,GlobalSettings,HpShutsOffRearSpeaker,1,00,00,00,00 ; Headphone does not mute rear speakers
+HKR,GlobalSettings,HpMode,1,01,00,00,00 ; Headphone is slaved to rear panel front channels
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedSampleRates44100,1,00,00,00,00 ; By default, not supported
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedSampleRates48000,1,01,00,00,00 ; By default, only one supported
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedSampleRates96000,1,00,00,00,00 ; By default, not supported
+
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedBitDepths16,1,01,00,00,00 ; By default, only one supported
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedBitDepths20,1,00,00,00,00 ; By default, not supported
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedBitDepths24,1,00,00,00,00 ; By default, not supported
+HKR,GlobalSettings\\SpdifOut,ExternalSpdifReceiverSupportedBitDepths32,1,00,00,00,00 ; By default, not supported
+
+HKR,GlobalSettings\\SpdifIn,SpdifInputBitDepth,1,00,00,00,00 ; By default, 16 bit digital capture
+HKR,GlobalSettings\\SpdifIn,SpdifInputSampleRate,1,01,00,00,00; By default, 48KHz digital capture
+
+HKR,PowerSettings,ConservationIdleTime,1,1e,00,00,00
+HKR,PowerSettings,PerformanceIdleTime,1,2c,01,00,00
+HKR,PowerSettings,IdlePowerState,1,04,00,00,00
+
+HKLM,%IFRegPath%\Settings,"Mode",65537,01,00,00,00
+
+HKLM,%WindowsRunKey%,"SoundMAXPnP",,"%16422%\%CoreFilePath%\smax4pnp.exe"
+HKLM,%WindowsAppPaths%\smwdmif.dll,,,"%16422%\%CoreFilePath%\smwdmif.dll"
+HKLM,%WindowsAppPaths%\smwdmif.dll,"Path",,"%16422%\%CoreFilePath%"
+HKLM,%WindowsAppPaths%\smax4pnp.exe,,,"%16422%\%CoreFilePath%\smax4pnp.exe"
+HKLM,%WindowsAppPaths%\smax4pnp.exe,"Path",,"%16422%\%CoreFilePath%"
+HKLM,%WindowsAppPaths%\SMaxCore,,,"%16422%\%CoreFilePath%"
+HKLM,%WindowsAppPaths%\SMaxCore,"Path",,"%16422%\%CoreFilePath%"
+
+HKLM,%IFRegPath%\Mode,"Object000",65537,01,00,00,00
+
+HKLM,%IFRegPath%\Mode,"Object050",65537,01,00,00,00
+
+[HdAudInitHP_M.AddReg]
+HKR,InitVerbs,NumVerbs,0x00010001, 0x00000014 ; Example: Number of verbs in the init section
+HKR,InitVerbs,0000, 0x00010001, 0x00B70103 ; Mono Out select is analog mixer
+HKR,InitVerbs,0001, 0x00010001, 0x01771F41 ; Set fourth byte Aux pin config to no connection 
+HKR,InitVerbs,0002, 0x00010001, 0x0053B03B ; Set LineOut, HP and Mono out to the same initial levels (-3 dB)
+HKR,InitVerbs,0003, 0x00010001, 0x0063B03B ;
+HKR,InitVerbs,0004, 0x00010001, 0x00771F41 ;
+HKR,InitVerbs,0005, 0x00010001, 0x00870721 ; Front Mic (Port B) VRef to 50%-2.25v
+HKR,InitVerbs,0006, 0x00010001, 0x01870721 ; Rear Mic (Port F) VRef to 50%-2.25v
+HKR,InitVerbs,0007, 0x00010001, 0x01E3B000 ; Unmute front mic capture node
+HKR,InitVerbs,0008, 0x00010001, 0x01F3B000 ; Unmute rear mic capture node
+HKR,InitVerbs,0009, 0x00010001, 0x0123B098 ; Front Mic mute and 1.5dB
+HKR,InitVerbs,0010, 0x00010001, 0x01C3B098 ; Rear Mic mute and 1.5dB
+HKR,InitVerbs,0011, 0x00010001, 0x0153b00B ; Unmuted the ADCs
+HKR,InitVerbs,0012, 0x00010001, 0x0093B098 ; Line In Mute and 1.5dB
+HKR,InitVerbs,0013, 0x00010001, 0x01D3B098 ; Set CD level
+HKR,InitVerbs,0014, 0x00010001, 0x00D70101 ; Select PC_Beep pin
+HKR,InitVerbs,0015, 0x00010001, 0x00D3B00F ; Set PC_Beep initial level (0 dB)
+HKR,InitVerbs,0016, 0x00010001, 0x0133B098 ; Line In mute and 1.5dB
+HKR,InitVerbs,0017, 0x00010001, 0x006707C0 ; Enables HP Drive
+HKR,InitVerbs,0018, 0x00010001, 0x00470600 ; Force Channel/Stream ID to 00
+HKR,InitVerbs,0019, 0x00010001, 0x00A3B027 ; Unmute SPDIf node
+
+[FrontPanel.AddReg]
+HKR,AD1981, FPMicEnable, 0x00010001, 0x40000065; Set Mic Record Slider
+
+[HpMobileCommon.AddReg]
+;HKR AD1981 settings
+HKR,AD1981, "MonoMux", 1, 0x00
+HKR,AD1981, Cmplx, 1, 01 ; Build Complex device (Render\Capture)
+HKR,AD1981\\Disable, "MonR", 1, 01 ; Disable Mono Out Record 
+HKR,AD1981\\Disable, "MicV", 1, 01 ; Disable Microphone Playback 
+HKR,AD1981, MicBoostValue, 0x00010001, 0x00000010 ; 10 = 0db (off) +10db (on)
+HKR,AD1981, MicR, 1, 0B; Set Mic Record Slider
+HKR,AD1981, LinR, 1, 0B; Set Line In Record Slider 
+HKR,AD1981, HPWithMaster, 1, 01 ; Associate headphone volume with front master volme.
+HKR,AD1981, JackSense, 0x00010001, 0x00000A00; ; Value for legacy mute table
+
+;global settings
+HKR,GlobalSettings,AELic0E,1, 01, 00, 00, 00 ;  Enable Andrea Speaker Phone
+HKR,GlobalSettings,ESEnabled, 1, 00, 00, 00, 00 ;  Speaker Phone select
+HKR,GlobalSettings,MagicNumber,1, 00, 00, 00, 60
+HKR,GlobalSettings,StereoMic,1, 01, 00, 00, 00 
+;HKR,GlobalSettings,SpkrCnfg,1, 04, 00, 00, 00
+HKR,GlobalSettings,StartupDelay,1, 00, 04, 00, 00; Set startup delay for HD Bus Driver
+HKR,GlobalSettings,NotifyInterval,1,08,00,00,00; Set for 8 millisecond delay
+HKR,GlobalSettings,MuteSplitEnab,1,00,00,00,00; Enable= 1, 01, Disabled= 1, 00
+
+;PowerSettings:
+HKR,PowerSettings, "PM_EAPD_Mode", 1, 08 ; 
+HKR,PowerSettings, "PM_Power_Mode", 1, 01 ;
+HKR,PowerSettings, "PM_EAPD_Polarity", 1, 01 ;
+HKR,PowerSettings, "PM_Last_Valid_Power_Mode_AC", 1, 00
+HKR,PowerSettings, "PM_Last_Valid_Power_Mode_Batt", 1, 02
+
+[Beamforming.AddReg]
+HKR,GlobalSettings,AELic03,1, 01, 00, 00, 00 ;  Enable Andrea Beam forming
+HKR,GlobalSettings,DSDA3Enabled, 1, 00, 00, 00, 00 ;  
+
+[HdAudBranding.AddReg]
+HKR,Branding,url,,"http://www.analog.com" 
+
+[HdAngelFireEQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+d6, 37, 5f, 8b, 49, 3d, e0, ca, a1, 74, \
+7e, 2b, e0, 8c, 7d, 4b, 05, c9, 20, 73, \
+c3, 21, 69, b9, 7d, 35, bf, e8, 97, 46, \
+eb, 27, d1, c3, bf, 34, 55, e3, 2f, 3c, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+f0, 39, 58, 88, fc, 3d, 13, c8, a8, 77, \
+df, 30, bb, 88, 79, 48, a8, c6, 45, 77, \
+3f, 28, d0, a9, be, 37, 02, e0, 30, 56, \
+37, 2d, a9, ae, 39, 37, 90, db, 57, 51, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+67, 3a, af, 87, 23, 3e, 75, c7, 51, 78, \
+0c, 32, e6, 87, d0, 47, 23, c6, 1a, 78, \
+c6, 29, 6e, a6, 46, 38, f4, dd, 92, 59, \
+74, 2e, 3e, aa, cd, 37, be, d9, c2, 55, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+bd, 3b, ce, 85, 95, 3e, ad, c5, 32, 7a, \
+6c, 35, a8, 85, ec, 45, a7, c4, 58, 7a, \
+63, 2e, d7, 9c, e0, 39, bc, d7, 29, 63, \
+2f, 32, 2b, 9e, 8b, 39, 46, d4, d5, 61, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+df, 3c, 3d, 84, f5, 3e, 2b, c4, c3, 7b, \
+41, 38, f1, 83, 56, 44, 68, c3, 0f, 7c, \
+94, 32, ee, 94, 56, 3b, 16, d2, 12, 6b, \
+89, 35, d7, 94, 1c, 3b, 5a, cf, 29, 6b, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+05, ff, fd, 46, 1c, 4b, df, f5, 03, b9, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+1e, 3d, e6, 83, 0a, 3f, d7, c3, 1a, 7c, \
+de, 38, 97, 83, fe, 43, 23, c3, 69, 7c, \
+88, 33, 3b, 93, aa, 3b, cd, d0, c5, 6c, \
+4b, 36, ed, 92, 77, 3b, 3d, ce, 13, 6d, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+6c, 03, 5c, 43, 5b, 4a, 38, f2, a4, bc, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+d2, 3d, ef, 82, 46, 3f, e7, c2, 11, 7d, \
+9e, 3a, a0, 82, 03, 43, 5e, c2, 60, 7d, \
+59, 36, 6d, 8e, a5, 3c, 02, cd, 93, 71, \
+85, 38, b2, 8d, 81, 3c, fa, ca, 4e, 72, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+19, 10, c9, 21, 30, 48, b6, e7, 37, de, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+69, 3e, 23, 82, 78, 3f, 1f, c2, dd, 7d, \
+13, 3c, dd, 81, 32, 42, ba, c1, 23, 7e, \
+cd, 38, 78, 8a, 7f, 3d, b4, c9, 88, 75, \
+71, 3a, 9f, 89, 67, 3d, 27, c8, 61, 76, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+30, 1b, d1, f1, 4b, 46, 85, de, 2f, 0e, \
+dd, cd, f9, 1b, 84, 53, 9f, 1e, 07, e4, \
+89, 3e, f7, 81, 83, 3f, f3, c1, 09, 7e, \
+64, 3c, b4, 81, 05, 42, 97, c1, 4c, 7e, \
+58, 39, 9f, 89, b0, 3d, f8, c8, 61, 76, \
+de, 3a, c7, 88, 9a, 3d, 88, c7, 39, 77, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+b2, 1d, 3c, e6, dd, 45, 70, dc, c4, 19, \
+89, d8, db, 1d, b1, 51, c6, 15, 25, e2
+
+[HdAudOpus1EQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+6c, 21, 39, 94, 8f, 4e, 04, d0, c7, 6b, \
+89, 1f, b4, af, b8, 43, bf, dc, 4c, 50, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+c4, f6, 00, 00, 92, 50, ab, f8, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+35, 29, 3d, 8e, da, 4a, f0, cb, c3, 71, \
+3a, 27, c5, a0, d6, 42, ef, d5, 3b, 5f, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+32, 08, 91, dc, a0, 4c, 2e, eb, 6f, 23, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+ee, 2a, ff, 8c, 08, 4a, 09, cb, 01, 73, \
+f9, 28, b1, 9d, a3, 42, 63, d4, 4f, 62, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+fc, 0b, 20, d4, c4, 4b, 3f, e8, e0, 2b, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+e7, 2f, 8f, 89, aa, 47, 6f, c8, 71, 76, \
+1d, 2e, 53, 95, 0c, 42, d6, cf, ad, 6a, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+0b, 17, e6, bb, 44, 49, b1, df, 1a, 44, \
+be, c0, fc, 20, 3f, 60, 03, 1f, 04, df, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+21, 34, d3, 86, a6, 45, 38, c6, 2d, 79, \
+9d, 32, db, 8e, 88, 41, da, cb, 25, 71, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+c5, 20, 93, a8, 10, 47, 2a, d8, 6d, 57, \
+07, e7, 14, 28, 8b, 56, 6d, 02, ec, d7, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+0e, 35, 3f, 86, 36, 45, bc, c5, c1, 79, \
+9e, 33, 86, 8d, 6b, 41, f7, ca, 7a, 72, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+f7, 22, 9b, a4, 91, 46, 77, d6, 65, 5b, \
+dd, ed, 56, 21, d0, 54, 54, fd, aa, de, \
+1b, ab, c8, 24, ad, 79, 37, 1b, 38, db, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+b4, 37, a3, 84, f3, 43, 59, c4, 5d, 7b, \
+86, 36, dd, 89, 16, 41, 64, c8, 23, 76, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+6d, 29, e1, 99, 1b, 45, 77, d1, 1f, 66, \
+3b, 00, 00, 00, 28, 50, 9c, ef, 00, 00, \
+d2, d7, 61, 2d, 5b, 68, d3, ff, 9f, d2, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+ed, 39, 56, 83, e4, 42, 2f, c3, aa, 7c, \
+01, 39, fc, 86, cd, 40, 32, c6, 04, 79, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+13, 2f, bb, 91, d4, 43, 18, cd, 45, 6e, \
+4b, 0f, b8, d9, 57, 4c, 5e, e4, 48, 26, \
+d1, f3, 42, 0b, 83, 5d, ad, ee, be, f4, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+69, 3a, 0f, 83, a9, 42, ee, c2, f1, 7c, \
+8c, 39, 62, 86, bd, 40, b7, c5, 9e, 79, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+56, 30, 12, 90, 8b, 43, 1f, cc, ee, 6f, \
+a0, 12, f0, d0, 7f, 4b, e0, e1, 10, 2f, \
+72, f9, 00, 00, 55, 5b, 3a, eb, 00, 00
+
+[HdAudVail2EQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+d6, 37, 5f, 8b, 49, 3d, e0, ca, a1, 74, \
+4a, 2f, 63, 90, ae, 44, 08, cc, 9d, 6f, \
+95, 21, c1, bf, e7, 32, 83, eb, 3f, 40, \
+d5, 0e, 90, f3, 75, 26, b5, 0a, 70, 0c, \
+0c, 07, 7d, 36, 71, 2f, 82, 09, 83, c9, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+f0, 39, 58, 88, fc, 3d, 13, c8, a8, 77, \
+96, 33, 4c, 8b, 7a, 43, f0, c8, b4, 74, \
+f1, 27, 75, ae, a4, 35, 6a, e2, 8b, 51, \
+47, 17, 8f, da, d8, 2a, e1, fd, 71, 25, \
+04, 12, b0, 2c, a2, 32, 59, fb, 50, d3, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+67, 3a, af, 87, 23, 3e, 75, c7, 51, 78, \
+89, 34, 42, 8a, 35, 43, 41, c8, be, 75, \
+73, 29, b1, aa, 4b, 36, 42, e0, 4f, 55, \
+57, 19, 6b, d4, ea, 2b, bf, fa, 95, 2b, \
+94, 14, fa, 23, 60, 33, 0b, f8, 06, dc, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+bd, 3b, ce, 85, 95, 3e, ad, c5, 32, 7a, \
+45, 37, 6f, 87, 71, 42, 49, c6, 91, 78, \
+0b, 2e, 02, a0, 45, 38, b0, d9, fe, 5f, \
+de, 1f, d3, c1, 4e, 2f, d3, f0, 2d, 3e, \
+73, 1c, 00, 00, aa, 35, e3, ed, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+df, 3c, 3d, 84, f5, 3e, 2b, c4, c3, 7b, \
+95, 39, 3c, 85, cc, 41, 9f, c4, c4, 7a, \
+42, 32, 34, 97, 15, 3a, a9, d3, cc, 68, \
+49, 26, 4e, b1, a4, 32, 13, e7, b2, 4e, \
+e9, 23, ac, d9, d5, 37, 41, e4, 54, 26, \
+e9, c3, 21, 12, 39, 4e, de, 2d, df, ed, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+1e, 3d, e6, 83, 0a, 3f, d7, c3, 1a, 7c, \
+17, 3a, c7, 84, a7, 41, 42, c4, 39, 7b, \
+39, 33, 50, 95, 7f, 3a, 48, d2, b0, 6a, \
+d4, 27, 9f, ad, 71, 33, bb, e4, 61, 52, \
+ab, 25, fe, d0, 58, 38, fc, e1, 02, 2f, \
+d9, d0, 94, 1c, bd, 4c, 69, 22, 6c, e3, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+d2, 3d, ef, 82, 46, 3f, e7, c2, 11, 7d, \
+88, 3b, 83, 83, 40, 41, 38, c3, 7d, 7c, \
+13, 36, f8, 8f, ba, 3b, 32, ce, 08, 70, \
+94, 2c, f2, a2, e9, 35, 82, dd, 0e, 5d, \
+05, 2b, a4, b8, e6, 39, 15, db, 5c, 47, \
+60, ed, 78, 1e, 78, 49, 27, 09, 88, e1, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+69, 3e, 23, 82, 78, 3f, 1f, c2, dd, 7d, \
+bc, 3c, 82, 82, ea, 40, 5a, c2, 7e, 7d, \
+94, 38, 94, 8b, ce, 3c, 9e, ca, 6c, 74, \
+03, 31, d9, 99, 36, 38, c6, d6, 27, 66, \
+eb, 2f, b4, a5, 53, 3b, c1, d4, 4c, 5a, \
+1e, 01, bf, ff, 35, 47, ad, f7, 41, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+89, 3e, f7, 81, 83, 3f, f3, c1, 09, 7e, \
+ff, 3c, 4c, 82, d7, 40, 2a, c2, b4, 7d, \
+23, 39, a3, 8a, 0b, 3d, d2, c9, 5d, 75, \
+09, 32, da, 97, bf, 38, 38, d5, 26, 68, \
+0b, 31, de, a1, a6, 3b, 4e, d3, 22, 5e, \
+48, 05, 14, f6, ba, 46, fd, f3, ec, 09, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00
+
+[HdAudTaos2EQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+8e, 37, 91, 8c, 5d, 3c, 14, cc, 6f, 73, \
+64, 30, 05, 8f, 5f, 44, 3d, cb, fb, 70, \
+98, 0d, 4e, dd, 09, 20, 5e, 12, b2, 22, \
+c5, 21, 68, e4, 88, 37, b2, e6, 98, 1b, \
+4e, 23, f5, 07, 24, 42, 8d, da, 0b, f8, \
+6f, f6, d9, 29, 6b, 33, 26, 16, 27, d6, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+b7, 39, 42, 89, 4b, 3d, fe, c8, be, 76, \
+6c, 34, 62, 8a, 3e, 43, 56, c8, 9e, 75, \
+6e, 15, 15, cd, 01, 25, 8f, 05, eb, 32, \
+60, 28, 26, c4, 61, 39, 3f, de, da, 3b, \
+26, 2a, a0, d8, a1, 41, 38, d4, 60, 27, \
+06, 06, 21, 27, 16, 36, e3, 03, df, d8, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+31, 3a, 88, 88, 80, 3d, 4f, c8, 78, 77, \
+4f, 35, 6f, 89, fe, 42, b2, c7, 91, 76, \
+62, 17, 17, c9, 3e, 26, 5e, 02, e9, 36, \
+ea, 29, 45, bd, d0, 39, 45, dc, bb, 42, \
+b3, 2b, 6b, ce, 84, 41, c9, d2, 95, 31, \
+6b, 09, 0b, 20, aa, 36, ea, ff, f5, df, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+93, 3b, 76, 86, 18, 3e, 55, c6, 8a, 79, \
+de, 37, d9, 86, 47, 42, db, c5, 27, 79, \
+af, 1d, 87, bc, 3c, 2a, 14, f8, 79, 43, \
+90, 2e, 81, aa, 1d, 3b, 53, d6, 7f, 55, \
+43, 30, 00, b3, 2c, 41, 90, ce, 00, 4d, \
+84, 13, 00, 00, 64, 38, 17, f4, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+be, 3c, ba, 84, 99, 3e, a8, c4, 46, 7b, \
+07, 3a, d5, 84, ac, 41, 4d, c4, 2b, 7b, \
+11, 24, 57, b0, 49, 2e, a5, ed, a9, 4f, \
+c1, 32, 4c, 9c, 4a, 3c, f4, d0, b4, 63, \
+3f, 34, 3b, 9f, e0, 40, e1, ca, c5, 60, \
+d1, 1c, bd, db, fb, 39, 33, e9, 43, 24, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 3d, 5a, 84, b5, 3e, 4b, c4, a6, 7b, \
+7f, 3a, 69, 84, 8a, 41, f6, c3, 97, 7b, \
+a2, 25, 6f, ad, 47, 2f, 16, eb, 91, 52, \
+b5, 33, 71, 99, 8e, 3c, bd, cf, 8f, 66, \
+21, 35, 70, 9b, cf, 40, 0f, ca, 90, 64, \
+fe, 1e, 54, d3, 5b, 3a, a7, e6, ac, 2c, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+bb, 3d, 48, 83, 06, 3f, 3f, c3, b8, 7c, \
+d7, 3b, 40, 83, 2a, 41, fe, c2, c0, 7c, \
+89, 2a, 86, a4, 63, 32, 13, e3, 7a, 5b, \
+80, 36, d4, 91, 56, 3d, 29, cc, 2c, 6e, \
+b2, 37, c5, 91, 9e, 40, b0, c7, 3b, 6e, \
+99, 25, 5b, bb, 7c, 3b, eb, de, a5, 44, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+57, 3e, 64, 82, 49, 3f, 5f, c2, 9c, 7d, \
+f7, 3c, 52, 82, d9, 40, 30, c2, ae, 7d, \
+39, 2f, 3d, 9c, 5c, 35, 6a, db, c3, 63, \
+ee, 38, 21, 8c, 05, 3e, 0d, c9, df, 73, \
+e0, 39, 1a, 8b, 75, 40, ab, c5, e6, 74, \
+aa, 2b, 48, a8, 85, 3c, d0, d7, b8, 57, \
+ad, d8, a8, 19, f0, 45, 62, 21, 58, e6, \
+79, 3e, 33, 82, 57, 3f, 2f, c2, cd, 7d, \
+35, 3d, 20, 82, c8, 40, 03, c2, e0, 7d, \
+53, 30, 53, 9a, 0f, 36, 9d, d9, ad, 65, \
+77, 39, fa, 8a, 2b, 3e, 5d, c8, 06, 75, \
+5a, 3a, d6, 89, 6b, 40, 3a, c5, 2a, 76, \
+0f, 2d, 5b, a4, c2, 3c, 2e, d6, a5, 5b, \
+9c, e1, 99, 1b, 6d, 45, f7, 18, 67, e4
+
+[HdAudHeavenly2EQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+54, 2e, 3f, 8c, 2d, 49, 7e, c8, c1, 73, \
+7c, 2d, 34, af, 62, 36, 21, dc, cc, 50, \
+fb, ee, 75, e3, 64, 6d, a1, e3, 8b, 1c, \
+9a, 05, 00, 00, 6c, 33, f8, 06, 00, 00, \
+6a, d6, 7f, 39, 15, 63, 80, 06, 81, c6, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+f8, 32, 48, 88, c4, 46, 43, c6, b8, 77, \
+c0, 31, 84, a0, 99, 38, a7, d5, 7c, 5f, \
+df, 03, d1, c1, af, 61, 71, da, 2f, 3e, \
+45, 11, 41, e2, f0, 35, cb, f8, bf, 1d, \
+e9, f2, cf, 31, 9d, 59, 7b, f3, 31, ce, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+fc, 33, 7c, 87, 3d, 46, c6, c5, 84, 78, \
+bc, 32, 7b, 9d, 1b, 39, 29, d4, 85, 62, \
+5a, 08, ba, ba, 2d, 5f, 79, d8, 46, 45, \
+f6, 13, c3, da, 84, 36, 85, f5, 3d, 25, \
+90, f8, 26, 28, bc, 57, b4, ef, da, d7, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+e5, 36, 5a, 85, ba, 44, 60, c4, a6, 7a, \
+a8, 35, 36, 95, a0, 3a, b7, cf, ca, 6a, \
+2d, 15, af, a7, fd, 57, d5, d2, 51, 58, \
+2c, 1c, 47, c4, 49, 38, 8b, eb, b9, 3b, \
+61, 08, 00, 00, 7b, 52, 24, e5, 00, 00, \
+03, e4, 82, 3d, 91, 5e, 6d, fd, 7e, c2, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+56, 39, b9, 83, 76, 43, 34, c3, 47, 7c, \
+3d, 38, cc, 8e, f8, 3b, cb, cb, 34, 71, \
+14, 20, ae, 99, e2, 51, 0a, ce, 52, 66, \
+dc, 23, 06, b1, f0, 39, 33, e2, fa, 4e, \
+bf, 15, 50, d6, 09, 4e, 37, dc, b0, 29, \
+95, fb, da, 21, bb, 56, b0, ed, 26, de, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+dd, 39, 63, 83, 2f, 43, f3, c2, 9d, 7c, \
+d1, 38, 79, 8d, 44, 3c, ea, ca, 87, 72, \
+7b, 22, ed, 96, 89, 50, fb, cc, 13, 69, \
+a9, 25, df, ac, 54, 3a, 03, e0, 21, 53, \
+b9, 18, 1d, cd, 0c, 4d, 3a, da, e3, 32, \
+77, 00, 26, 16, 1c, 55, 6c, ea, da, e9, \
+95, 8b, 4e, 29, ff, 7f, b1, 16, b2, d6, \
+5f, 3b, 79, 82, 67, 42, 3a, c2, 87, 7d, \
+7f, 3a, d6, 89, 24, 3d, 5c, c8, 2a, 76, \
+6c, 29, b5, 8f, a6, 4c, ee, c9, 4b, 70, \
+19, 2b, 36, a1, 80, 3b, 67, d9, ca, 5e, \
+6f, 21, ec, b3, 28, 4a, 69, d4, 14, 4c, \
+64, 0e, 7e, ed, 7b, 50, 20, e1, 82, 12, \
+44, c6, 25, 31, 3d, 7f, 7f, fa, db, ce, \
+a0, 3c, c1, 81, c0, 41, 9f, c1, 3f, 7e, \
+ef, 3b, f8, 86, e3, 3d, 2d, c6, 08, 79, \
+52, 2f, 75, 8a, 57, 49, 56, c7, 8b, 75, \
+0b, 30, c5, 97, 90, 3c, 64, d3, 3b, 68, \
+08, 29, 25, a1, a1, 47, 57, cf, db, 5e, \
+59, 1a, 32, c8, 82, 4c, 25, d9, ce, 37, \
+eb, e8, ee, 0b, 3d, 6d, d9, e9, 12, f4, \
+e6, 3c, 9a, 81, 9c, 41, 7e, c1, 66, 7e, \
+40, 3c, 5e, 86, 0d, 3e, b2, c5, a2, 79, \
+9d, 30, 6a, 89, 9e, 48, c4, c6, 96, 76, \
+2c, 31, c5, 95, ce, 3c, 06, d2, 3b, 6a, \
+b9, 2a, 74, 9d, 11, 47, 35, ce, 8c, 62, \
+04, 1d, 4d, c0, 9f, 4b, 5c, d7, b3, 3f, \
+b4, ef, 00, 00, b6, 69, 96, e6, 00, 00
+
+[HdAudGallo1EQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+2d, 31, 29, 8d, ec, 44, e6, c9, d7, 72, \
+0f, 2b, 04, 99, 66, 42, 8b, d2, fc, 66, \
+b4, 1e, 9e, b7, 06, 37, 45, ea, 62, 48, \
+7b, d6, 6b, fb, 6d, 6d, 19, fc, 95, 04, \
+a6, 11, 20, 42, 50, 45, 0a, e9, e0, bd, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+09, 35, 15, 89, a4, 43, 53, c7, eb, 76, \
+41, 30, 82, 91, ce, 41, f1, cd, 7e, 6e, \
+d8, 25, 13, a9, f3, 38, 35, e1, ed, 56, \
+00, f3, 25, d9, 26, 61, db, eb, db, 26, \
+3c, 1c, c0, 12, 19, 44, ab, df, 40, ed, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+e2, 35, 40, 88, 5c, 43, c2, c6, c0, 77, \
+6a, 31, f4, 8f, ab, 41, ea, cc, 0c, 70, \
+84, 27, e3, a5, 67, 39, 14, df, 1d, 5a, \
+bf, f8, ee, d0, ad, 5e, 95, e8, 12, 2f, \
+a4, 1e, 27, 05, d2, 43, 89, dd, d9, fa, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+51, 38, fc, 85, 8d, 42, 22, c5, 04, 7a, \
+cd, 34, ac, 8b, 48, 41, ea, c9, 54, 74, \
+96, 2c, c0, 9c, c4, 3a, a6, d8, 40, 63, \
+dc, 08, 6e, b9, bc, 57, 67, df, 92, 46, \
+cb, 25, bb, db, 00, 43, 34, d7, 45, 24, \
+bd, 08, a7, 34, 03, 35, 3e, 02, 59, cb, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+5d, 3a, 38, 84, df, 41, c3, c3, c8, 7b, \
+b5, 37, 4a, 88, f3, 40, 57, c7, b6, 77, \
+31, 31, 17, 95, 02, 3c, cd, d2, e9, 6a, \
+6f, 16, cf, a6, e4, 51, ac, d7, 31, 59, \
+27, 2c, ed, b9, 46, 42, 93, d1, 13, 46, \
+e0, 13, e7, 16, 3a, 37, e6, f4, 19, e9, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+cf, 3a, da, 83, b9, 41, 77, c3, 26, 7c, \
+59, 38, 94, 87, e0, 40, c6, c6, 6c, 78, \
+3d, 32, 6d, 93, 4a, 3c, 78, d1, 93, 6c, \
+70, 19, 00, a3, 99, 50, f6, d5, 00, 5d, \
+96, 2d, 1d, b3, 1c, 42, 4e, d0, e3, 4c, \
+75, 16, 3b, 0c, be, 37, cc, f1, c5, f3, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+15, 3c, d6, 82, 4d, 41, 9e, c2, 2a, 7d, \
+30, 3a, 9b, 85, aa, 40, 26, c5, 65, 7a, \
+56, 35, ae, 8e, 20, 3d, 8a, cd, 52, 71, \
+2d, 22, bc, 98, d6, 4c, fc, d0, 44, 67, \
+c9, 31, 51, a1, a1, 41, 96, cc, af, 5e, \
+56, 1e, 36, e8, 4e, 39, 5b, e8, ca, 17, \
+ce, b9, ec, 1f, 97, 6c, 9a, 19, 14, e0, \
+24, 3d, 06, 82, f3, 40, e9, c1, fa, 7d, \
+bc, 3b, 05, 84, 7d, 40, c7, c3, fb, 7b, \
+0a, 38, ba, 8a, da, 3d, 1b, ca, 46, 75, \
+ba, 29, f2, 90, 96, 49, b0, cc, 0e, 6f, \
+6c, 35, c0, 94, 36, 41, 5e, c9, 40, 6b, \
+b0, 25, 23, c7, c5, 3a, 8b, df, dd, 38, \
+0a, e3, 4e, 12, e3, 5e, 13, fe, b2, ed, \
+5f, 3d, db, 81, df, 40, c2, c1, 25, 7e, \
+13, 3c, af, 83, 73, 40, 7a, c3, 51, 7c, \
+a4, 38, df, 89, 04, 3e, 58, c9, 21, 76, \
+66, 2b, 5d, 8f, de, 48, bc, cb, a3, 70, \
+3a, 36, 59, 92, 1e, 41, a7, c8, a7, 6d, \
+67, 27, 06, c0, 1c, 3b, 7d, dd, fa, 3f, \
+60, ea, 3e, 09, 73, 5c, 2d, f9, c2, f6
+
+[HdAudDavos3EQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+8e, 37, 91, 8c, 5d, 3c, 14, cc, 6f, 73, \
+64, 30, 05, 8f, 5f, 44, 3d, cb, fb, 70, \
+98, 0d, 4e, dd, 09, 20, 5e, 12, b2, 22, \
+c5, 21, 68, e4, 88, 37, b2, e6, 98, 1b, \
+4e, 23, f5, 07, 24, 42, 8d, da, 0b, f8, \
+6f, f6, d9, 29, 6b, 33, 26, 16, 27, d6, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+b7, 39, 42, 89, 4b, 3d, fe, c8, be, 76, \
+6c, 34, 62, 8a, 3e, 43, 56, c8, 9e, 75, \
+6e, 15, 15, cd, 01, 25, 8f, 05, eb, 32, \
+60, 28, 26, c4, 61, 39, 3f, de, da, 3b, \
+26, 2a, a0, d8, a1, 41, 38, d4, 60, 27, \
+06, 06, 21, 27, 16, 36, e3, 03, df, d8, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+31, 3a, 88, 88, 80, 3d, 4f, c8, 78, 77, \
+4f, 35, 6f, 89, fe, 42, b2, c7, 91, 76, \
+62, 17, 17, c9, 3e, 26, 5e, 02, e9, 36, \
+ea, 29, 45, bd, d0, 39, 45, dc, bb, 42, \
+b3, 2b, 6b, ce, 84, 41, c9, d2, 95, 31, \
+6b, 09, 0b, 20, aa, 36, ea, ff, f5, df, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+93, 3b, 76, 86, 18, 3e, 55, c6, 8a, 79, \
+de, 37, d9, 86, 47, 42, db, c5, 27, 79, \
+af, 1d, 87, bc, 3c, 2a, 14, f8, 79, 43, \
+90, 2e, 81, aa, 1d, 3b, 53, d6, 7f, 55, \
+43, 30, 00, b3, 2c, 41, 90, ce, 00, 4d, \
+84, 13, 00, 00, 64, 38, 17, f4, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+be, 3c, ba, 84, 99, 3e, a8, c4, 46, 7b, \
+07, 3a, d5, 84, ac, 41, 4d, c4, 2b, 7b, \
+11, 24, 57, b0, 49, 2e, a5, ed, a9, 4f, \
+c1, 32, 4c, 9c, 4a, 3c, f4, d0, b4, 63, \
+3f, 34, 3b, 9f, e0, 40, e1, ca, c5, 60, \
+d1, 1c, bd, db, fb, 39, 33, e9, 43, 24, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 3d, 5a, 84, b5, 3e, 4b, c4, a6, 7b, \
+7f, 3a, 69, 84, 8a, 41, f6, c3, 97, 7b, \
+a2, 25, 6f, ad, 47, 2f, 16, eb, 91, 52, \
+b5, 33, 71, 99, 8e, 3c, bd, cf, 8f, 66, \
+21, 35, 70, 9b, cf, 40, 0f, ca, 90, 64, \
+fe, 1e, 54, d3, 5b, 3a, a7, e6, ac, 2c, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+bb, 3d, 48, 83, 06, 3f, 3f, c3, b8, 7c, \
+d7, 3b, 40, 83, 2a, 41, fe, c2, c0, 7c, \
+89, 2a, 86, a4, 63, 32, 13, e3, 7a, 5b, \
+80, 36, d4, 91, 56, 3d, 29, cc, 2c, 6e, \
+b2, 37, c5, 91, 9e, 40, b0, c7, 3b, 6e, \
+99, 25, 5b, bb, 7c, 3b, eb, de, a5, 44, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+57, 3e, 64, 82, 49, 3f, 5f, c2, 9c, 7d, \
+f7, 3c, 52, 82, d9, 40, 30, c2, ae, 7d, \
+39, 2f, 3d, 9c, 5c, 35, 6a, db, c3, 63, \
+ee, 38, 21, 8c, 05, 3e, 0d, c9, df, 73, \
+e0, 39, 1a, 8b, 75, 40, ab, c5, e6, 74, \
+aa, 2b, 48, a8, 85, 3c, d0, d7, b8, 57, \
+ad, d8, a8, 19, f0, 45, 62, 21, 58, e6, \
+79, 3e, 33, 82, 57, 3f, 2f, c2, cd, 7d, \
+35, 3d, 20, 82, c8, 40, 03, c2, e0, 7d, \
+53, 30, 53, 9a, 0f, 36, 9d, d9, ad, 65, \
+77, 39, fa, 8a, 2b, 3e, 5d, c8, 06, 75, \
+5a, 3a, d6, 89, 6b, 40, 3a, c5, 2a, 76, \
+0f, 2d, 5b, a4, c2, 3c, 2e, d6, a5, 5b, \
+9c, e1, 99, 1b, 6d, 45, f7, 18, 67, e4
+
+[HdAudCaymus2EQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+e4, 37, 17, 8b, 83, 3d, 98, ca, e9, 74, \
+d8, 2c, db, 8d, 1e, 49, 09, ca, 25, 72, \
+5a, 10, 27, d4, 4f, 29, 55, 06, d9, 2b, \
+61, 28, 02, ea, d4, 35, ca, e1, fe, 15, \
+71, f8, 3e, 28, ce, 2f, c1, 17, c2, d7, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+fb, 39, 21, 88, 28, 3e, dc, c7, df, 77, \
+d6, 31, 7b, 89, be, 46, 6b, c7, 85, 76, \
+d9, 18, d5, c2, 5a, 2d, cc, f9, 2b, 3d, \
+a3, 2d, 65, c6, 18, 38, 44, da, 9b, 39, \
+25, 07, f0, 25, 22, 33, b7, 05, 10, da, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+72, 3a, 7c, 87, 4c, 3e, 42, c7, 84, 78, \
+ef, 32, 98, 88, 38, 46, d8, c6, 68, 77, \
+e9, 1a, bc, be, 56, 2e, c1, f6, 44, 41, \
+dd, 2e, e0, be, 9f, 38, 84, d8, 20, 41, \
+60, 0a, 1f, 1f, dd, 33, c1, 01, e1, e0, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+c6, 3b, a6, 85, b4, 3e, 85, c5, 5a, 7a, \
+14, 36, 32, 86, b9, 44, 33, c5, ce, 79, \
+65, 21, 4c, b2, 6d, 31, 2e, ed, b4, 4d, \
+8a, 32, 9a, aa, 34, 3a, 42, d3, 66, 55, \
+10, 14, 00, 00, 0f, 36, e1, f5, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+e6, 3c, 1f, 84, 0c, 3f, 0e, c4, e1, 7b, \
+ba, 38, 58, 84, 76, 43, d0, c3, a8, 7b, \
+b2, 27, e5, a6, 6c, 34, e1, e3, 1b, 59, \
+d4, 35, 9b, 9b, 9f, 3b, 8d, ce, 65, 64, \
+14, 1d, 6b, dc, 19, 38, d3, ea, 95, 23, \
+93, bc, 0b, 13, 79, 56, f4, 2c, f5, ec, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+24, 3d, cb, 83, 1f, 3f, bc, c3, 35, 7c, \
+4d, 39, f6, 83, 30, 43, 83, c3, 0a, 7c, \
+32, 29, 46, a4, 23, 35, aa, e1, ba, 5b, \
+92, 36, a5, 98, f0, 3b, 7d, cd, 5b, 67, \
+33, 1f, 1d, d4, 94, 38, 39, e8, e3, 2b, \
+e5, ca, dd, 1d, 06, 54, 15, 21, 23, e2, \
+d9, d0, 96, 1d, bd, 4c, 69, 22, 6a, e2, \
+d7, 3d, db, 82, 56, 3f, d2, c2, 25, 7d, \
+f1, 3a, e8, 82, 68, 42, a6, c2, 18, 7d, \
+c9, 2d, 76, 9c, 53, 37, e3, da, 8a, 63, \
+be, 38, e0, 90, e0, 3c, 62, ca, 20, 6f, \
+ab, 25, 53, bc, 0a, 3a, 4a, e0, ad, 43, \
+f1, e9, 79, 1f, b7, 4e, 57, 07, 87, e0, \
+60, ed, c8, 26, 78, 49, 27, 09, 38, d9, \
+6c, 3e, 14, 82, 84, 3f, 0f, c2, ec, 7d, \
+4f, 3c, 12, 82, c1, 41, ef, c1, ee, 7d, \
+05, 32, 84, 95, 57, 39, a3, d4, 7c, 6a, \
+9d, 3a, 37, 8b, ae, 3d, b4, c7, c9, 74, \
+a8, 2b, 3c, a9, 65, 3b, f3, d8, c4, 56, \
+05, ff, bd, ff, 1c, 4b, df, f5, 43, 00, \
+1e, 01, 03, 0a, 35, 47, ad, f7, fd, f5, \
+8c, 3e, e9, 81, 8e, 3f, e5, c1, 17, 7e, \
+9b, 3c, e5, 81, 9d, 41, c7, c1, 1b, 7e, \
+fe, 32, f4, 93, ce, 39, 33, d3, 0c, 6c, \
+07, 3b, 18, 8a, dc, 3d, 1c, c7, e8, 75, \
+09, 2d, 4a, a5, b5, 3b, 41, d7, b6, 5a, \
+6c, 03, d9, f5, 5b, 4a, 38, f2, 27, 0a, \
+48, 05, 00, 00, ba, 46, fd, f3, 00, 00
+
+[HdDDandTTplatformsEQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+8c, 39, 6f, 8a, 83, 3c, f0, c9, 91, 75, \
+2a, 31, ef, 8f, 89, 42, 4d, cc, 11, 70, \
+c0, 21, ac, b9, 2e, 35, 11, e9, 54, 46, \
+a1, 24, 72, d6, e7, 36, 78, e4, 8e, 29, \
+77, 0b, ed, f6, 8b, 2e, fc, 05, 13, 09, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+38, 3b, a2, 87, 6a, 3d, 5e, c7, 5e, 78, \
+f8, 34, 1e, 8b, e2, 41, 25, c9, e2, 74, \
+38, 28, 10, aa, 7e, 37, 49, e0, f0, 55, \
+a8, 2a, 7b, ba, e8, 38, 6f, dc, 85, 45, \
+6e, 15, 0c, db, db, 31, b7, f8, f4, 24, \
+71, fd, 6a, 2c, f0, 30, 9e, 11, 96, d3, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+96, 3b, 07, 87, 9d, 3d, cc, c6, f9, 78, \
+cf, 35, 20, 8a, be, 41, 73, c8, e0, 75, \
+be, 29, ac, a6, 0a, 38, 38, de, 54, 59, \
+10, 2c, 9e, b4, 60, 39, 8f, da, 62, 4b, \
+ca, 17, 41, d4, a3, 32, 92, f5, bf, 2b, \
+5d, 01, 55, 2c, d3, 31, ce, 0c, ab, d3, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+a5, 3c, 4c, 85, 30, 3e, 2b, c5, b4, 7a, \
+3c, 38, 65, 87, 53, 41, 70, c6, 9b, 78, \
+5a, 2e, 0d, 9d, b0, 39, f5, d7, f3, 62, \
+4c, 30, b4, a4, c8, 3a, ec, d4, 4c, 5b, \
+15, 1f, 04, c0, 10, 35, da, eb, fc, 3f, \
+b6, 0c, ea, 18, 65, 34, e5, fe, 16, e7, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+8a, 3d, dc, 83, ab, 3e, cb, c3, 24, 7c, \
+4a, 3a, 3f, 85, f9, 40, bc, c4, c1, 7a, \
+8c, 32, 1b, 95, 30, 3b, 44, d2, e5, 6a, \
+1a, 34, a9, 98, 0b, 3c, db, cf, 57, 67, \
+08, 26, 9e, ae, 5f, 37, 99, e2, 62, 51, \
+fb, 16, b2, f4, b8, 36, 4d, f2, 4e, 0b, \
+45, b7, a5, 06, ac, 4f, 0f, 39, 5b, f9, \
+bb, 3d, 8d, 83, c6, 3e, 7e, c3, 73, 7c, \
+bd, 3a, cc, 84, e6, 40, 5d, c4, 34, 7b, \
+80, 33, 65, 93, 87, 3b, f8, d0, 9b, 6c, \
+f6, 34, 3b, 96, 55, 3c, b5, ce, c5, 69, \
+ab, 27, d6, aa, ea, 37, 6b, e0, 2a, 55, \
+63, 19, 21, eb, 43, 37, 59, ef, df, 14, \
+4f, c7, 4f, 12, d5, 4d, db, 2a, b1, ed, \
+49, 3e, ac, 82, 13, 3f, a3, c2, 54, 7d, \
+05, 3c, 8c, 83, ae, 40, 4d, c3, 74, 7c, \
+51, 36, 8f, 8e, 89, 3c, 25, cd, 71, 71, \
+7c, 37, b9, 8f, 2b, 3d, 58, cb, 47, 70, \
+a5, 2c, 1b, a0, 91, 39, c9, d9, e5, 5f, \
+bf, 20, 2e, ce, ed, 38, 53, e6, d2, 31, \
+44, e8, 41, 13, 0e, 4a, ad, 0d, bf, ec, \
+c0, 3e, f1, 81, 53, 3f, ed, c1, 0f, 7e, \
+17, 3d, 8b, 82, 7f, 40, 69, c2, 75, 7d, \
+c7, 38, 93, 8a, 6a, 3d, ce, c9, 6d, 75, \
+ac, 39, cd, 8a, e5, 3d, 6e, c8, 33, 75, \
+32, 31, 44, 97, 14, 3b, b9, d3, bc, 68, \
+9f, 27, c1, b5, 7b, 3a, e5, dd, 3f, 4a, \
+b6, fd, eb, f5, 99, 47, b2, fa, 15, 0a, \
+d9, 3e, c9, 81, 61, 3f, c5, c1, 37, 7e, \
+53, 3d, 54, 82, 75, 40, 38, c2, ac, 7d, \
+53, 39, b7, 89, 9c, 3d, 10, c9, 49, 76, \
+28, 3a, cd, 89, 0e, 3e, ca, c7, 33, 76, \
+3d, 32, 5e, 95, 6d, 3b, 56, d2, a2, 6a, \
+39, 29, 9c, b0, d8, 3a, ee, db, 64, 4f, \
+24, 02, 0c, ed, 17, 47, c5, f6, f4, 12
+
+[HdAbitaEQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+d6, 37, 5f, 8b, 49, 3d, e0, ca, a1, 74, \
+7e, 2b, e0, 8c, 7d, 4b, 05, c9, 20, 73, \
+c3, 21, 69, b9, 7d, 35, bf, e8, 97, 46, \
+eb, 27, d1, c3, bf, 34, 55, e3, 2f, 3c, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+f0, 39, 58, 88, fc, 3d, 13, c8, a8, 77, \
+df, 30, bb, 88, 79, 48, a8, c6, 45, 77, \
+3f, 28, d0, a9, be, 37, 02, e0, 30, 56, \
+37, 2d, a9, ae, 39, 37, 90, db, 57, 51, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+67, 3a, af, 87, 23, 3e, 75, c7, 51, 78, \
+0c, 32, e6, 87, d0, 47, 23, c6, 1a, 78, \
+c6, 29, 6e, a6, 46, 38, f4, dd, 92, 59, \
+74, 2e, 3e, aa, cd, 37, be, d9, c2, 55, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+bd, 3b, ce, 85, 95, 3e, ad, c5, 32, 7a, \
+6c, 35, a8, 85, ec, 45, a7, c4, 58, 7a, \
+63, 2e, d7, 9c, e0, 39, bc, d7, 29, 63, \
+2f, 32, 2b, 9e, 8b, 39, 46, d4, d5, 61, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+df, 3c, 3d, 84, f5, 3e, 2b, c4, c3, 7b, \
+41, 38, f1, 83, 56, 44, 68, c3, 0f, 7c, \
+94, 32, ee, 94, 56, 3b, 16, d2, 12, 6b, \
+89, 35, d7, 94, 1c, 3b, 5a, cf, 29, 6b, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+05, ff, fd, 46, 1c, 4b, df, f5, 03, b9, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+1e, 3d, e6, 83, 0a, 3f, d7, c3, 1a, 7c, \
+de, 38, 97, 83, fe, 43, 23, c3, 69, 7c, \
+88, 33, 3b, 93, aa, 3b, cd, d0, c5, 6c, \
+4b, 36, ed, 92, 77, 3b, 3d, ce, 13, 6d, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+6c, 03, 5c, 43, 5b, 4a, 38, f2, a4, bc, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+d2, 3d, ef, 82, 46, 3f, e7, c2, 11, 7d, \
+9e, 3a, a0, 82, 03, 43, 5e, c2, 60, 7d, \
+59, 36, 6d, 8e, a5, 3c, 02, cd, 93, 71, \
+85, 38, b2, 8d, 81, 3c, fa, ca, 4e, 72, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+19, 10, c9, 21, 30, 48, b6, e7, 37, de, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+69, 3e, 23, 82, 78, 3f, 1f, c2, dd, 7d, \
+13, 3c, dd, 81, 32, 42, ba, c1, 23, 7e, \
+cd, 38, 78, 8a, 7f, 3d, b4, c9, 88, 75, \
+71, 3a, 9f, 89, 67, 3d, 27, c8, 61, 76, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+30, 1b, d1, f1, 4b, 46, 85, de, 2f, 0e, \
+dd, cd, f9, 1b, 84, 53, 9f, 1e, 07, e4, \
+89, 3e, f7, 81, 83, 3f, f3, c1, 09, 7e, \
+64, 3c, b4, 81, 05, 42, 97, c1, 4c, 7e, \
+58, 39, 9f, 89, b0, 3d, f8, c8, 61, 76, \
+de, 3a, c7, 88, 9a, 3d, 88, c7, 39, 77, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+b2, 1d, 3c, e6, dd, 45, 70, dc, c4, 19, \
+89, d8, db, 1d, b1, 51, c6, 15, 25, e2
+
+[HdChimayEQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+e4, 37, 17, 8b, 83, 3d, 98, ca, e9, 74, \
+d8, 2c, db, 8d, 1e, 49, 09, ca, 25, 72, \
+5a, 10, 27, d4, 4f, 29, 55, 06, d9, 2b, \
+61, 28, 02, ea, d4, 35, ca, e1, fe, 15, \
+71, f8, 3e, 28, ce, 2f, c1, 17, c2, d7, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+fb, 39, 21, 88, 28, 3e, dc, c7, df, 77, \
+d6, 31, 7b, 89, be, 46, 6b, c7, 85, 76, \
+d9, 18, d5, c2, 5a, 2d, cc, f9, 2b, 3d, \
+a3, 2d, 65, c6, 18, 38, 44, da, 9b, 39, \
+25, 07, f0, 25, 22, 33, b7, 05, 10, da, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+72, 3a, 7c, 87, 4c, 3e, 42, c7, 84, 78, \
+ef, 32, 98, 88, 38, 46, d8, c6, 68, 77, \
+e9, 1a, bc, be, 56, 2e, c1, f6, 44, 41, \
+dd, 2e, e0, be, 9f, 38, 84, d8, 20, 41, \
+60, 0a, 1f, 1f, dd, 33, c1, 01, e1, e0, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+c6, 3b, a6, 85, b4, 3e, 85, c5, 5a, 7a, \
+14, 36, 32, 86, b9, 44, 33, c5, ce, 79, \
+65, 21, 4c, b2, 6d, 31, 2e, ed, b4, 4d, \
+8a, 32, 9a, aa, 34, 3a, 42, d3, 66, 55, \
+10, 14, 00, 00, 0f, 36, e1, f5, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+e6, 3c, 1f, 84, 0c, 3f, 0e, c4, e1, 7b, \
+ba, 38, 58, 84, 76, 43, d0, c3, a8, 7b, \
+b2, 27, e5, a6, 6c, 34, e1, e3, 1b, 59, \
+d4, 35, 9b, 9b, 9f, 3b, 8d, ce, 65, 64, \
+14, 1d, 6b, dc, 19, 38, d3, ea, 95, 23, \
+93, bc, 0b, 13, 79, 56, f4, 2c, f5, ec, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+24, 3d, cb, 83, 1f, 3f, bc, c3, 35, 7c, \
+4d, 39, f6, 83, 30, 43, 83, c3, 0a, 7c, \
+32, 29, 46, a4, 23, 35, aa, e1, ba, 5b, \
+92, 36, a5, 98, f0, 3b, 7d, cd, 5b, 67, \
+33, 1f, 1d, d4, 94, 38, 39, e8, e3, 2b, \
+e5, ca, dd, 1d, 06, 54, 15, 21, 23, e2, \
+d9, d0, 96, 1d, bd, 4c, 69, 22, 6a, e2, \
+d7, 3d, db, 82, 56, 3f, d2, c2, 25, 7d, \
+f1, 3a, e8, 82, 68, 42, a6, c2, 18, 7d, \
+c9, 2d, 76, 9c, 53, 37, e3, da, 8a, 63, \
+be, 38, e0, 90, e0, 3c, 62, ca, 20, 6f, \
+ab, 25, 53, bc, 0a, 3a, 4a, e0, ad, 43, \
+f1, e9, 79, 1f, b7, 4e, 57, 07, 87, e0, \
+60, ed, c8, 26, 78, 49, 27, 09, 38, d9, \
+6c, 3e, 14, 82, 84, 3f, 0f, c2, ec, 7d, \
+4f, 3c, 12, 82, c1, 41, ef, c1, ee, 7d, \
+05, 32, 84, 95, 57, 39, a3, d4, 7c, 6a, \
+9d, 3a, 37, 8b, ae, 3d, b4, c7, c9, 74, \
+a8, 2b, 3c, a9, 65, 3b, f3, d8, c4, 56, \
+05, ff, bd, ff, 1c, 4b, df, f5, 43, 00, \
+1e, 01, 03, 0a, 35, 47, ad, f7, fd, f5, \
+8c, 3e, e9, 81, 8e, 3f, e5, c1, 17, 7e, \
+9b, 3c, e5, 81, 9d, 41, c7, c1, 1b, 7e, \
+fe, 32, f4, 93, ce, 39, 33, d3, 0c, 6c, \
+07, 3b, 18, 8a, dc, 3d, 1c, c7, e8, 75, \
+09, 2d, 4a, a5, b5, 3b, 41, d7, b6, 5a, \
+6c, 03, d9, f5, 5b, 4a, 38, f2, 27, 0a, \
+48, 05, 00, 00, ba, 46, fd, f3, 00, 00
+
+[HdSapporoEQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+6c, 21, 39, 94, 8f, 4e, 04, d0, c7, 6b, \
+89, 1f, b4, af, b8, 43, bf, dc, 4c, 50, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+c4, f6, 00, 00, 92, 50, ab, f8, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+35, 29, 3d, 8e, da, 4a, f0, cb, c3, 71, \
+3a, 27, c5, a0, d6, 42, ef, d5, 3b, 5f, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+32, 08, 91, dc, a0, 4c, 2e, eb, 6f, 23, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+ee, 2a, ff, 8c, 08, 4a, 09, cb, 01, 73, \
+f9, 28, b1, 9d, a3, 42, 63, d4, 4f, 62, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+fc, 0b, 20, d4, c4, 4b, 3f, e8, e0, 2b, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+e7, 2f, 8f, 89, aa, 47, 6f, c8, 71, 76, \
+1d, 2e, 53, 95, 0c, 42, d6, cf, ad, 6a, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+0b, 17, e6, bb, 44, 49, b1, df, 1a, 44, \
+be, c0, fc, 20, 3f, 60, 03, 1f, 04, df, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+21, 34, d3, 86, a6, 45, 38, c6, 2d, 79, \
+9d, 32, db, 8e, 88, 41, da, cb, 25, 71, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+c5, 20, 93, a8, 10, 47, 2a, d8, 6d, 57, \
+07, e7, 14, 28, 8b, 56, 6d, 02, ec, d7, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+0e, 35, 3f, 86, 36, 45, bc, c5, c1, 79, \
+9e, 33, 86, 8d, 6b, 41, f7, ca, 7a, 72, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+f7, 22, 9b, a4, 91, 46, 77, d6, 65, 5b, \
+dd, ed, 56, 21, d0, 54, 54, fd, aa, de, \
+1b, ab, c8, 24, ad, 79, 37, 1b, 38, db, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+b4, 37, a3, 84, f3, 43, 59, c4, 5d, 7b, \
+86, 36, dd, 89, 16, 41, 64, c8, 23, 76, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+6d, 29, e1, 99, 1b, 45, 77, d1, 1f, 66, \
+3b, 00, 00, 00, 28, 50, 9c, ef, 00, 00, \
+d2, d7, 61, 2d, 5b, 68, d3, ff, 9f, d2, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+ed, 39, 56, 83, e4, 42, 2f, c3, aa, 7c, \
+01, 39, fc, 86, cd, 40, 32, c6, 04, 79, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+13, 2f, bb, 91, d4, 43, 18, cd, 45, 6e, \
+4b, 0f, b8, d9, 57, 4c, 5e, e4, 48, 26, \
+d1, f3, 42, 0b, 83, 5d, ad, ee, be, f4, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+69, 3a, 0f, 83, a9, 42, ee, c2, f1, 7c, \
+8c, 39, 62, 86, bd, 40, b7, c5, 9e, 79, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+56, 30, 12, 90, 8b, 43, 1f, cc, ee, 6f, \
+a0, 12, f0, d0, 7f, 4b, e0, e1, 10, 2f, \
+72, f9, 00, 00, 55, 5b, 3a, eb, 00, 00
+
+[HdOptimatorEQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+05, 38, 49, 8a, 31, 3e, c9, c9, b7, 75, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+76, 03, 57, be, b2, 4d, d7, ee, a9, 41, \
+7b, 22, 2f, e0, aa, 30, db, ec, d1, 1f, \
+72, 0b, a2, 2d, e4, 4b, aa, e8, 5e, d2, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+17, 3a, 84, 87, a9, 3e, 3f, c7, 7c, 78, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+9f, 11, 4b, ad, 7e, 4a, e2, e3, b5, 52, \
+8a, 28, 63, c3, d0, 33, a5, e3, 9d, 3c, \
+be, 17, e6, fc, 1b, 49, 26, df, 1a, 03, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+8b, 3a, eb, 86, c4, 3e, b0, c6, 15, 79, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+c7, 14, 9e, a9, c7, 49, 71, e1, 62, 56, \
+fd, 29, 24, bd, 90, 34, 73, e1, dc, 42, \
+81, 1a, 84, f0, 7b, 48, 03, dd, 7c, 0f, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+db, 3b, 36, 85, 10, 3f, 15, c5, ca, 7a, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+0f, 1e, 3d, 9f, ad, 47, 43, da, c3, 60, \
+6a, 2e, ca, ab, dd, 36, b8, da, 36, 54, \
+a7, 22, 8d, cc, a3, 46, b5, d6, 73, 33, \
+02, c0, 20, 21, 1f, 61, df, 1e, e0, de, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+f6, 3c, cc, 83, 4f, 3f, ba, c3, 34, 7c, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+42, 26, b7, 96, d3, 45, eb, d3, 49, 69, \
+81, 32, 2d, 9e, fd, 38, 82, d4, d3, 61, \
+d6, 29, 5f, b0, 03, 45, 26, d1, a1, 4f, \
+a1, e6, 32, 28, 20, 57, 3e, 02, ce, d7, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+33, 3d, 7e, 83, 5d, 3f, 6f, c3, 82, 7c, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+1a, 28, e2, 94, 68, 45, 7e, d2, 1e, 6b, \
+71, 33, 5f, 9b, 7a, 39, 14, d3, a1, 64, \
+72, 2b, c3, aa, a6, 44, e7, cf, 3d, 55, \
+84, ed, 6d, 21, 58, 55, 25, fd, 93, de, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+e3, 3d, a0, 82, 85, 3f, 98, c2, 60, 7d, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+83, 2d, b5, 8f, 2e, 44, 4e, ce, 4b, 70, \
+3b, 36, b8, 93, ec, 3a, d8, ce, 48, 6c, \
+28, 30, 25, 9c, 95, 43, 42, cc, db, 63, \
+00, 00, 00, 00, 8f, 50, 70, ef, 00, 00, \
+da, cf, 4f, 25, 05, 5d, 20, 13, b1, da, \
+75, 3e, e9, 81, a6, 3f, e4, c1, 17, 7e, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+35, 32, 6f, 8b, 1e, 43, ac, ca, 91, 74, \
+af, 38, c7, 8d, 33, 3c, 1e, cb, 39, 72, \
+39, 34, cd, 91, aa, 42, 1d, c9, 33, 6e, \
+24, 0f, a8, d9, a4, 4c, 37, e4, 58, 26, \
+11, ef, e2, 12, f1, 54, fe, fb, 1e, ed, \
+94, 3e, c1, 81, ad, 3f, be, c1, 3f, 7e, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+40, 33, 83, 8a, e2, 42, dd, c9, 7d, 75, \
+3b, 39, 8c, 8c, 7b, 3c, 49, ca, 74, 73, \
+1f, 35, cf, 8f, 75, 42, 6b, c8, 31, 70, \
+7d, 12, de, d0, c6, 4b, bc, e1, 22, 2f, \
+06, f5, 74, 09, 67, 53, 94, f7, 8c, f6
+
+[HdVictoriaBitterEQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+d6, 37, 5f, 8b, 49, 3d, e0, ca, a1, 74, \
+e7, 2e, cc, 8f, ae, 45, 6b, cb, 34, 70, \
+39, 33, 3c, a7, 7f, 3a, 48, d2, c4, 58, \
+17, 27, 6a, eb, 17, 31, d1, e7, 96, 14, \
+e3, 04, 1f, 3a, 3b, 35, e0, 05, e1, c5, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+f0, 39, 58, 88, fc, 3d, 13, c8, a8, 77, \
+51, 33, d7, 8a, 36, 44, 78, c8, 29, 75, \
+5d, 36, 73, 99, da, 3b, c9, cd, 8d, 66, \
+5b, 2c, 4d, c9, 3e, 34, 66, df, b3, 36, \
+e1, 10, 0f, 2f, 6a, 37, b4, f7, f1, d0, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+67, 3a, af, 87, 23, 3e, 75, c7, 51, 78, \
+4a, 34, d5, 89, e3, 43, d2, c7, 2b, 76, \
+12, 37, bc, 96, 28, 3c, c6, cc, 44, 69, \
+9b, 2d, f4, c1, fd, 34, 67, dd, 0c, 3e, \
+a2, 13, c7, 25, eb, 37, 72, f4, 39, da, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+bd, 3b, ce, 85, 95, 3e, ad, c5, 32, 7a, \
+17, 37, 1a, 87, f5, 42, f3, c5, e6, 78, \
+23, 39, 9a, 8f, 0b, 3d, d2, c9, 66, 70, \
+67, 31, ce, ad, 43, 37, 56, d7, 32, 52, \
+01, 1c, 00, 00, 71, 39, 8e, ea, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+df, 3c, 3d, 84, f5, 3e, 2b, c4, c3, 7b, \
+75, 39, fc, 84, 2c, 42, 5f, c4, 04, 7b, \
+ea, 3a, 66, 8a, cf, 3d, 46, c7, 9a, 75, \
+de, 34, 79, 9e, 56, 39, cb, d1, 87, 61, \
+cc, 23, 74, d8, dc, 3a, 57, e1, 8c, 27, \
+9a, b8, 84, 13, ea, 5a, 7b, 2c, 7c, ec, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+1e, 3d, e6, 83, 0a, 3f, d7, c3, 1a, 7c, \
+f9, 39, 8c, 84, 00, 42, 07, c4, 74, 7b, \
+4e, 3b, 5d, 89, fa, 3d, b7, c6, a3, 76, \
+a8, 35, 64, 9b, cf, 39, 88, d0, 9c, 64, \
+9e, 25, 99, cf, 31, 3b, 31, df, 67, 30, \
+ae, c7, 85, 1e, eb, 57, 67, 20, 7b, e1, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+d2, 3d, ef, 82, 46, 3f, e7, c2, 11, 7d, \
+72, 3b, 56, 83, 83, 41, 0b, c3, aa, 7c, \
+6f, 3c, 9e, 86, 77, 3e, 1a, c5, 62, 79, \
+fd, 37, 29, 93, 35, 3b, cd, cc, d7, 6c, \
+1a, 2b, f6, b6, 31, 3c, b4, d8, 0a, 49, \
+18, e8, fb, 1f, 79, 51, 6e, 06, 05, e0, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+69, 3e, 23, 82, 78, 3f, 1f, c2, dd, 7d, \
+ac, 3c, 61, 82, 1a, 41, 39, c2, 9f, 7d, \
+62, 3d, 8d, 84, df, 3e, be, c3, 73, 7b, \
+07, 3a, 01, 8d, 6d, 3c, 8c, c9, ff, 72, \
+12, 30, 16, a4, 19, 3d, d4, d2, ea, 5b, \
+e2, fd, bc, ff, 24, 4d, fa, f4, 44, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+89, 3e, f7, 81, 83, 3f, f3, c1, 09, 7e, \
+f0, 3c, 2d, 82, 04, 41, 0c, c2, d3, 7d, \
+97, 3d, 21, 84, f6, 3e, 73, c3, df, 7b, \
+7a, 3a, c4, 8b, b2, 3c, d3, c8, 3c, 74, \
+34, 31, 4c, a0, 4e, 3d, 7e, d1, b4, 5f, \
+6a, 02, bc, f5, 3e, 4c, 58, f1, 44, 0a, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00
+
+[HdDDDplatformsEQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+c6, 39, 6f, 89, 52, 3d, e7, c8, 91, 76, \
+85, 32, e3, 92, b1, 3d, c9, cf, 1d, 6d, \
+dd, 29, b3, 9a, c9, 43, 5a, d2, 4d, 65, \
+a2, 19, 2a, dd, 09, 29, 54, fd, d6, 22, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+52, e2, 1e, 0d, cd, 2a, e1, 32, e2, f2, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+65, 3b, de, 86, 04, 3e, 96, c6, 22, 79, \
+e5, 35, 87, 8d, 45, 3e, d5, cb, 79, 72, \
+5f, 2f, 65, 92, d7, 42, ca, cd, 9b, 6d, \
+8d, 20, a6, c6, 2d, 2d, 46, f2, 5a, 39, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+03, f9, a7, 1a, ef, 2f, 0d, 17, 59, e5, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+c1, 3b, 51, 86, 2c, 3e, 13, c6, af, 79, \
+a6, 36, 64, 8c, 66, 3e, f3, ca, 9c, 73, \
+9a, 30, b1, 90, a2, 42, c4, cc, 4f, 6f, \
+40, 22, 7b, c1, 32, 2e, 8d, ef, 85, 3e, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+55, fd, 1f, 17, ea, 30, c1, 11, e1, e8, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+c7, 3c, bf, 84, 9c, 3e, 9c, c4, 41, 7b, \
+d7, 38, 37, 89, c6, 3e, 63, c8, c9, 76, \
+2f, 34, 12, 8c, 05, 42, cc, c9, ee, 73, \
+9e, 27, 54, b2, 68, 31, fa, e6, ac, 4d, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+8a, 09, 00, 00, ad, 33, c8, 02, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+a3, 3d, 74, 83, fb, 3e, 61, c3, 8c, 7c, \
+b6, 3a, a3, 86, 18, 3f, 32, c6, 5d, 79, \
+41, 37, 7a, 88, 7e, 41, 40, c7, 86, 77, \
+ce, 2c, 49, a5, 83, 34, af, de, b7, 5a, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+63, 14, df, e0, 21, 36, 7b, f5, 21, 1f, \
+1e, 01, 43, 45, 35, 47, ad, f7, bd, ba, \
+d3, 3d, 2c, 83, 10, 3f, 1d, c3, d4, 7c, \
+1f, 3b, 17, 86, 2a, 3f, b6, c5, e9, 79, \
+ee, 37, bb, 87, 61, 41, b1, c6, 45, 78, \
+08, 2e, 6b, a2, 3f, 35, b9, dc, 95, 5d, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+ea, 16, 31, d9, b4, 36, 61, f2, cf, 26, \
+48, 05, d4, 41, ba, 46, fd, f3, 2c, be, \
+5c, 3e, 62, 82, 4b, 3f, 59, c2, 9e, 7d, \
+4d, 3c, 8c, 84, 5e, 3f, 55, c4, 74, 7b, \
+df, 39, ad, 85, 0c, 41, 15, c5, 53, 7a, \
+c2, 31, 2d, 9a, 7a, 37, c4, d6, d3, 65, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+a5, 1e, 69, c2, 74, 38, e7, e8, 97, 3d, \
+59, 11, 2d, 21, 58, 45, 4e, e9, d3, de, \
+cd, 3e, bb, 81, 7c, 3f, b7, c1, 45, 7e, \
+4a, 3d, 49, 83, 89, 3f, 2c, c3, b7, 7c, \
+81, 3b, 0b, 84, c4, 40, ba, c3, f5, 7b, \
+27, 35, 3c, 93, 82, 39, 57, d1, c4, 6c, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+e3, 25, 31, af, 17, 3a, 06, e0, cf, 50, \
+ff, 1b, 04, f2, 20, 44, e0, df, fc, 0d, \
+e6, 3e, 97, 81, 86, 3f, 93, c1, 69, 7e, \
+81, 3d, 05, 83, 92, 3f, ec, c2, fb, 7c, \
+dc, 3b, b3, 83, b5, 40, 6f, c3, 4d, 7c, \
+ed, 35, b8, 91, f8, 39, 1b, d0, 48, 6e, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+94, 27, 16, ab, 79, 3a, f3, dd, ea, 54, \
+6b, 1e, 91, e6, d9, 43, bb, dd, 6f, 19
+
+[HdSuzhouplatformsEQ.AddReg]
+HKR,EQSettings,"EnableSpeakerEQ", 1, 01
+HKR,EQSettings,"EnableSymmetryEQ", 1, 00
+HKR,EQSettings,"Coefficients", 1, \
+e5, 39, f8, 88, aa, 3d, 70, c8, 08, 77, \
+f9, 2a, 9f, 98, 6d, 3e, 99, d6, 61, 67, \
+a3, 28, b7, 98, 28, 47, 34, d0, 49, 67, \
+0d, 1a, 00, 0b, 49, 2c, aa, f9, 00, f5, \
+47, 03, a7, 2a, 0a, 39, ae, 03, 59, d5, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+7d, 3b, 85, 86, 46, 3e, 3c, c6, 7b, 79, \
+0d, 30, 44, 92, cf, 3e, 24, d1, bc, 6d, \
+89, 2e, ca, 90, 5a, 45, 1d, cc, 36, 6f, \
+32, 21, b1, e6, ff, 2f, ce, ee, 4f, 19, \
+f7, 0f, 4f, 0a, 7e, 3a, 8b, f5, b1, f5, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+d7, 3b, fe, 85, 68, 3e, c0, c5, 02, 7a, \
+33, 31, de, 90, e5, 3e, e8, cf, 22, 6f, \
+d8, 2f, 2f, 8f, f3, 44, 35, cb, d1, 70, \
+ef, 22, e7, dd, e6, 30, 2a, ec, 19, 22, \
+da, 12, 00, 00, d3, 3a, 53, f2, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+d8, 3c, 80, 84, cb, 3e, 5d, c4, 80, 7b, \
+92, 34, d8, 8c, 25, 3f, 49, cc, 28, 73, \
+a4, 33, de, 8a, c9, 43, 93, c8, 22, 75, \
+5b, 28, 34, c4, b7, 33, ed, e3, cc, 3b, \
+90, 1b, 8f, de, d2, 3b, 9e, e8, 71, 21, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+b0, 3d, 45, 83, 1d, 3f, 32, c3, bb, 7c, \
+7e, 37, 72, 89, 5d, 3f, 25, c9, 8e, 76, \
+e0, 36, 90, 87, cb, 42, 54, c6, 70, 78, \
+85, 2d, 14, af, 66, 36, 15, dc, ec, 50, \
+97, 23, c6, c0, be, 3c, aa, df, 3a, 3f, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+df, 3d, 01, 83, 2f, 3f, f1, c2, ff, 7c, \
+24, 38, b4, 88, 69, 3f, 72, c8, 4c, 77, \
+96, 37, e2, 86, 93, 42, d6, c5, 1e, 79, \
+bb, 2e, a8, aa, 07, 37, 3d, da, 58, 55, \
+74, 25, 6a, ba, f5, 3c, 97, dd, 96, 45, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+65, 3e, 41, 82, 62, 3f, 38, c2, bf, 7d, \
+02, 3a, 96, 86, 8d, 3f, 70, c6, 6a, 79, \
+9f, 39, 05, 85, f4, 41, 6d, c4, fb, 7a, \
+62, 32, 8c, 9e, ed, 38, b1, d4, 74, 61, \
+0b, 2b, fe, a8, 99, 3d, 5b, d7, 02, 57, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+d4, 3e, a3, 81, 8d, 3f, 9e, c1, 5d, 7e, \
+98, 3b, d0, 84, ab, 3f, bc, c4, 30, 7b, \
+54, 3b, 8f, 83, 6e, 41, 3e, c3, 71, 7c, \
+ad, 35, 28, 95, a3, 3a, af, cf, d8, 6a, \
+14, 30, ab, 9b, 2c, 3e, bf, d1, 55, 64, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+ec, 3e, 81, 81, 96, 3f, 7d, c1, 7f, 7e, \
+f0, 3b, 6e, 84, b2, 3f, 5d, c4, 92, 7b, \
+b3, 3b, 40, 83, 51, 41, fc, c2, c0, 7c, \
+6c, 36, 39, 93, 06, 3b, 8d, ce, c7, 6c, \
+38, 31, f7, 98, 4e, 3e, 7a, d0, 09, 67, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00, \
+00, 00, 00, 00, 00, 40, 00, 00, 00, 00
+
+[AEAudio.AddReg]
+HKR,,"UpperFilters",0x00010000,"AEAudio"  ;; AEAUDIO
+
+[HdAudBranding.AddProperty]
+DeviceVendorWebSite,,,,"http://www.analog.com"
+
+[HdAud.DelReg]
+HKR, Drivers
+HKR, GlobalSettings
+HKR, Branding
+HKR, InitVerbs
+HKR, RemVerbs
+HKR, PowerSettings
+HKR, Sensaura\Configuration
+HKR, Sensaura\State
+HKR, AD1986
+HKR, AD1983
+HKR, AD1981
+HKR, AD1988
+HKR, EQSettings
+HKCU,%IFRegPath%
+HKLM,%IFRegPath%
+HKCU,%PnPRegPath%
+HKLM,%PnPRegPath%
+HKLM,%WindowsRunKey%,"SoundMAXPnP"
+HKLM,%WindowsAppPaths%\smwdmif.dll
+HKLM,%WindowsAppPaths%\smax4pnp.exe
+HKLM,%WindowsAppPaths%\SMaxCore
+HKLM, SYSTEM\CurrentControlSet\Services\AeaudioService
+HKLM, Software\SRS Labs\APO 
+HKLM,%WindowsCPDirect%\Cpls,"SmaxESP"	;;smaxesp.cpl
+
+[HdAudCaymus2.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdAngelFire.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdAudOpus1.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdAudGallo1.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdAudProton1.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdVail2.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdAudDavos3.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdAudHeavenly2.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdTaos2.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdChimay.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdChimayDisc.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdAbita.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdSapporo.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdOptimator.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdVB.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdDosXXandDunkel.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdDukstienandDuval.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdTecateandTsingtao.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdDrax.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdSuzhouANandKV.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+[HdVostokandVelvet.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_RearLineOutWave%, HdAudModel.RearLineOutWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineOutTopo%, HdAudModel.RearLineOutTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_RearLineInWave%, HdAudModel.RearLineInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_RearLineInTopo%, HdAudModel.RearLineInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_FrontPanelHeadphoneWave%, HdAudModel.FrontPanelHeadphoneWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelHeadphoneTopo%, HdAudModel.FrontPanelHeadphoneTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_FrontPanelMicWave%, HdAudModel.FrontPanelMicWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_FrontPanelMicTopo%, HdAudModel.FrontPanelMicTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_DigitalOutputWave%, HdAudModel.DigitalOutputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalOutputTopo%, HdAudModel.DigitalOutputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_DigitalInputWave%, HdAudModel.DigitalInputWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_DigitalInputTopo%, HdAudModel.DigitalInputTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_MicArrayWave%, HdAudModel.MicArrayWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_MicArrayTopo%, HdAudModel.MicArrayTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_AuxInWave%, HdAudModel.AuxInWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_AuxInTopo%, HdAudModel.AuxInTopo
+
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_CmplxWave%, HdAudModel.CmplxWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_CmplxTopo%, HdAudModel.CmplxTopo
+
+; Rear line out
+[HdAudModel.RearLineOutWave]
+AddReg = HdAudModel.RearLineOutWave.AddReg, HdAudModel.CommonWave.AddReg
+
+[HdAudModel.RearLineOutWave.AddReg]
+HKR,,FriendlyName,,%RearLineOutWaveDeviceName%
+;HKR,,FriendlyName,,%RearLineOutDacName%
+
+[HdAudModel.CommonWave.AddReg]
+HKR,,CLSID,,%Proxy.CLSID%
+
+;IntHdAudGuid.RearLineOutDac
+HKLM,%MediaCategories%\%HdAudGuidRearLineOutDac%,Name,,%RearLineOutDacName%
+HKLM,%MediaCategories%\%HdAudGuidRearLineOutDac%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%HdAudGuidDisableDigitalOutput%,Name,,%DisableDigitalOutputName%
+HKLM,%MediaCategories%\%HdAudGuidDisableDigitalOutput%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%HdAudGuidFrontHPOutDac%,Name,,%FrontHPOutDacName%
+HKLM,%MediaCategories%\%HdAudGuidFrontHPOutDac%,Display,1,00,00,00,00
+
+HKLM,%MediaCategories%\%ADIGUID.Front%,Name,,%Pin.Front%
+HKLM,%MediaCategories%\%ADIGUID.Front%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.Surround%,Name,,%Pin.Surround%
+HKLM,%MediaCategories%\%ADIGUID.Surround%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.Center%,Name,,%Pin.Center%
+HKLM,%MediaCategories%\%ADIGUID.Center%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.Lfe%,Name,,%Pin.Lfe%
+HKLM,%MediaCategories%\%ADIGUID.Lfe%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.CLfe%,Name,,%Pin.CLfe%
+HKLM,%MediaCategories%\%ADIGUID.CLfe%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.SwapC%,Name,,%Control.SwapC%
+HKLM,%MediaCategories%\%ADIGUID.SwapC%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.FPMicSel%,Name,,%Control.MicSelect%
+HKLM,%MediaCategories%\%ADIGUID.FPMicSel%,Display,1,00,00,00,00
+HKLM,%MediaCategories%\%ADIGUID.PcBeep%,Name,,%Pin.PcBeep%
+HKLM,%MediaCategories%\%ADIGUID.PcBeep%,Display,1,00,00,00,00
+
+[HdAudModel.RearLineOutTopo]
+AddReg = HdAudModel.RearLineOutTopo.AddReg
+
+; Rear LineOut Topology
+
+[HdAudModel.RearLineOutTopo.AddReg]
+HKR,,FriendlyName,,%RearLineOutTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Rear line in
+
+[HdAudModel.RearLineInWave]
+AddReg = HdAudModel.RearLineInWave.AddReg
+
+[HdAudModel.RearLineInWave.AddReg]
+HKR,,FriendlyName,,%RearLineInWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.RearLineInTopo]
+AddReg = HdAudModel.RearLineInTopo.AddReg
+
+[HdAudModel.RearLineInTopo.AddReg]
+HKR,,FriendlyName,,%RearLineInTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Front panel headphone
+
+[HdAudModel.FrontPanelHeadphoneWave]
+AddReg = HdAudModel.FrontPanelHeadphoneWave.AddReg
+
+[HdAudModel.FrontPanelHeadphoneWave.AddReg]
+HKR,,FriendlyName,,%FrontPanelHeadphoneWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.FrontPanelHeadphoneTopo]
+AddReg = HdAudModel.FrontPanelHeadphoneTopo.AddReg
+
+[HdAudModel.FrontPanelHeadphoneTopo.AddReg]
+HKR,,FriendlyName,,%FrontPanelHeadphoneTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Front panel mic
+
+[HdAudModel.FrontPanelMicWave]
+AddReg = HdAudModel.FrontPanelMicWave.AddReg
+
+[HdAudModel.FrontPanelMicWave.AddReg]
+HKR,,FriendlyName,,%FrontPanelMicWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.FrontPanelMicTopo]
+AddReg = HdAudModel.FrontPanelMicTopo.AddReg
+
+[HdAudModel.FrontPanelMicTopo.AddReg]
+HKR,,FriendlyName,,%FrontPanelMicTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Digital output
+
+[HdAudModel.DigitalOutputWave]
+AddReg = HdAudModel.DigitalOutputWave.AddReg
+
+[HdAudModel.DigitalOutputWave.AddReg]
+HKR,,FriendlyName,,%DigitalOutputWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.DigitalOutputTopo]
+AddReg = HdAudModel.DigitalOutputTopo.AddReg
+
+[HdAudModel.DigitalOutputTopo.AddReg]
+HKR,,FriendlyName,,%DigitalOutputTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Digital input
+
+[HdAudModel.DigitalInputWave]
+AddReg = HdAudModel.DigitalInputWave.AddReg
+
+[HdAudModel.DigitalInputWave.AddReg]
+HKR,,FriendlyName,,%DigitalInputWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.DigitalInputTopo]
+AddReg = HdAudModel.DigitalInputTopo.AddReg
+
+[HdAudModel.DigitalInputTopo.AddReg]
+HKR,,FriendlyName,,%DigitalInputTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Microphone Array
+
+[HdAudModel.MicArrayWave]
+AddReg = HdAudModel.MicArrayWave.AddReg
+
+[HdAudModel.MicArrayWave.AddReg]
+HKR,,FriendlyName,,%MicArrayWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.MicArrayTopo]
+AddReg = HdAudModel.MicArrayTopo.AddReg
+
+[HdAudModel.MicArrayTopo.AddReg]
+HKR,,FriendlyName,,%MicArrayTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Auxiliary Input
+
+[HdAudModel.AuxInWave]
+AddReg = HdAudModel.AuxInWave.AddReg
+
+[HdAudModel.AuxInWave.AddReg]
+HKR,,FriendlyName,,%AuxInWaveDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudModel.AuxInTopo]
+AddReg = HdAudModel.AuxInTopo.AddReg
+
+[HdAudModel.AuxInTopo.AddReg]
+HKR,,FriendlyName,,%AuxInTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+; Complex Device
+
+[HdAudModel.CmplxWave]
+AddReg = HdAudModel.CmplxWave.AddReg, HdAudModel.CommonWave.AddReg
+
+[HdAudModel.CmplxWave.AddReg]
+HKR,,FriendlyName,,%SMXWaveDeviceName%
+
+[HdAudModel.CmplxTopo]
+AddReg = HdAudModel.CmplxTopo.AddReg
+
+[HdAudModel.CmplxTopo.AddReg]
+HKR,,FriendlyName,,%SMXTopoDeviceName%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[HdAudSecurity.AddReg]
+; FILE_DEVICE_SOUND
+HKR,,DeviceType,0x10001,0x0000001D
+; SDDL_DEVOBJ_SYS_ALL_ADM_RWX_WORLD_RWX_RES_RWX
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GRGWGX;;;BA)(A;;GRGWGX;;;WD)(A;;GRGWGX;;;RC)"
+
+[Strings]
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"
+ADI="AnalogDevices"
+AnalogDevices.Mfg="Analog Devices"
+
+; localizable
+DiskId1 = "Installation Disk"
+HdAudioFunctionDriver.ADICodec.DeviceDesc = "SoundMAX Integrated Digital HD Audio"
+
+UAAFunctionDriverForHdAudio.SvcDesc = "ADI UAA Function Driver for High Definition Audio Service"
+
+AEAudio.SvcDesc = "AE Audio Service"	;; AEAUDIO
+
+RearLineOutWaveDeviceName =        "SoundMAX HD Audio O"
+RearLineOutDacName =               "HD Audio rear line out"
+RearLineInWaveDeviceName =         "SoundMAX HD Audio I"
+RearMicInWaveDeviceName =          "HD Audio rear mic"
+FrontPanelHeadphoneWaveDeviceName ="HD Audio front headphone"
+FrontHPOutDacName =                "HD Audio front headphone"
+FrontPanelMicWaveDeviceName =      "HD Audio front mic"
+DigitalOutputWaveDeviceName =      "HD Audio digital out"
+DigitalInputWaveDeviceName =       "HD Audio digital in"
+MicArrayWaveDeviceName =           "HD Audio mic array"
+AuxInWaveDeviceName =              "HD Audio aux in"
+SMXWaveDeviceName =		   "SoundMAX HD Audio"
+
+RearLineOutTopoDeviceName =        "HD Audio rear output mixer"
+RearLineInTopoDeviceName =         "HD Audio rear input mixer"
+RearMicInTopoDeviceName =          "HD Audio rear mic mixer"
+FrontPanelHeadphoneTopoDeviceName ="HD Audio front headphone mixer"
+FrontPanelMicTopoDeviceName =      "HD Audio front mic mixer"
+DigitalOutputTopoDeviceName =      "HD Audio digital out mixer"
+DigitalInputTopoDeviceName =       "HD Audio digital in mixer"
+MicArrayTopoDeviceName =           "HD Audio mic array mixer" 
+AuxInTopoDeviceName =              "HD Audio aux in mixer"
+SMXTopoDeviceName =                "SoundMAX HD Audio mixer"
+
+DisableDigitalOutputName	  ="Disable Digital Output"
+HdAudioDeviceDescription = "ADI UAA Function Driver for High Definition Audio"
+
+; non localizable
+
+KSNAME_RearLineOutWave="RearLineOutWave"
+KSNAME_RearLineInWave="RearLineInWave"
+KSNAME_FrontPanelHeadphoneWave="FrontPanelHeadphoneWave"
+KSNAME_FrontPanelMicWave="FrontPanelMicWave"
+KSNAME_DigitalOutputWave="DigitalOutputWave"
+KSNAME_DigitalInputWave="DigitalInputWave"
+KSNAME_MicArrayWave="MicArrayWave"
+KSNAME_AuxInWave="AuxInputWave"
+KSNAME_CmplxWave="CmplxWave"
+
+KSNAME_RearLineOutTopo="RearLineOutTopo"
+KSNAME_RearLineInTopo="RearLineInTopo"
+KSNAME_FrontPanelHeadphoneTopo="FrontPanelHeadphoneTopo"
+KSNAME_FrontPanelMicTopo="FrontPanelMicTopo"
+KSNAME_DigitalOutputTopo="DigitalOutputTopo"
+KSNAME_DigitalInputTopo="DigitalInputTopo"
+KSNAME_MicArrayTopo="MicArrayTopo"
+KSNAME_AuxInTopo="AuxInputTopo"
+KSNAME_CmplxTopo="CmplxTopo"
+
+ADIGUID.Front       ="{992C636A-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.Surround    ="{992C6365-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.Center      ="{992C6364-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.Lfe         ="{992C6363-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.CLfe        ="{E1FB4CDC-0FF6-4722-8B7E-B93CCC6F82C6}"
+ADIGUID.SwapC       ="{A3156CDD-A925-4A37-BD1F-BC9D627F3F06}"
+ADIGUID.FPMicSel    ="{992C638D-643D-11D2-9BDC-00A0C9696B7D}"
+ADIGUID.PcBeep      ="{992C6360-643D-11D2-9BDC-00A0C9696B7D}"
+
+Pin.Front        ="Front"            ; Front Output
+Pin.Surround     ="Rear"             ; Surround Output
+Pin.Center       ="Center"           ; Center Channel Output
+Pin.Lfe          ="Subwoofer"        ; Sub woofer ( Lfe )
+Pin.CLfe         ="Sub/Cen"          ; Sub Center/LFE
+Pin.PcBeep       ="PC Beep"          ; PC Beep Volume Control
+
+Control.SwapC	 ="Swap Center/Subwoofer"
+Control.MicSelect="Front Mic Select"     ; Microphone advanced control
+
+KSCATEGORY_AUDIO = "{6994AD04-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_TOPOLOGY="{DDA54A40-1E4C-11D1-A050-405705C10000}"
+Proxy.CLSID ="{17CCA71B-ECD7-11D0-B908-00A0C9223196}"
+
+; guids for rear line out
+HdAudGuidRearLineOutDac= "{EEF86A90-3742-4974-B8D2-5370E1C540F6}"
+HdAudGuidFrontHPOutDac = "{497B34AD-D67F-411c-8076-80D5B4250D67}"
+HdAudGuidDisableDigitalOutput = "{F06BB67D-5C2F-48ad-A307-B449E3B217D6}"
+
+IFRegPath="SOFTWARE\Analog Devices\SMWDMIF"
+WindowsRunKey="Software\Microsoft\Windows\CurrentVersion\Run"
+WindowsAppPaths="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"
+PnPRegPath="Software\Analog Devices\smax4pnp"
+WindowsCPDirect="SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel"	;;smaxesp.cpl
+
+CoreFilePath="Analog Devices\Core"
+
+; History Information
+DriverMfgr="AnalogDevices"
+DriverVersionID="5.10.5240"
+DriverBuildDate="04/24/2008"
+DriverBuildID="5.10.01.5240"
+INFVersionID="5.10.01.5240-0000"
+DriverOEM="AnalogDevices"
+DriverFamily="Audio"
+DriverProduct="SoundMAX"
+DriverDescription="Audio Driver"	
+DriverOEMVersion="x00"
+
